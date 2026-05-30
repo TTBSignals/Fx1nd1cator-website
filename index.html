@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FX1ND1CATORS | Trading Tools</title>
+
+  <title>FX1ND1CATORS | Trading Indicators & Automated Systems</title>
 
   <style>
     * {
@@ -13,63 +14,65 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: "Orbitron", Arial, sans-serif;
-      background: #020403;
-      color: white;
-      overflow-x: hidden;
-    }
-
     html {
       scroll-behavior: smooth;
     }
 
-    /* Animated black and green wave background */
-    .background {
+    body {
+      font-family: Arial, sans-serif;
+      background: #020403;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .bg {
       position: fixed;
       inset: 0;
-      z-index: -2;
-      background: radial-gradient(circle at top, #061f0d 0%, #020403 45%, #000 100%);
-      overflow: hidden;
+      z-index: -3;
+      background:
+        radial-gradient(circle at top left, rgba(0,255,90,0.22), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(0,255,90,0.16), transparent 28%),
+        #000000;
     }
 
     .wave {
-      position: absolute;
-      width: 160%;
-      height: 260px;
-      left: -30%;
+      position: fixed;
+      width: 170%;
+      height: 280px;
+      left: -35%;
       border-radius: 50%;
-      background: linear-gradient(90deg, transparent, rgba(0,255,90,0.75), transparent);
-      filter: blur(28px);
-      opacity: 0.35;
-      animation: moveWave 8s infinite ease-in-out;
+      background: linear-gradient(90deg, transparent, rgba(0,255,90,0.55), transparent);
+      filter: blur(40px);
+      opacity: 0.28;
+      z-index: -2;
+      animation: waveMove 10s infinite ease-in-out;
     }
 
     .wave.one {
-      top: 20%;
-      transform: rotate(-10deg);
+      top: 18%;
+      transform: rotate(-9deg);
     }
 
     .wave.two {
-      top: 55%;
-      transform: rotate(12deg);
-      animation-delay: 2s;
-      opacity: 0.25;
+      top: 58%;
+      transform: rotate(11deg);
+      animation-delay: 3s;
+      opacity: 0.22;
     }
 
     .wave.three {
-      top: 80%;
-      transform: rotate(-8deg);
-      animation-delay: 4s;
-      opacity: 0.18;
+      top: 82%;
+      transform: rotate(-5deg);
+      animation-delay: 5s;
+      opacity: 0.16;
     }
 
-    @keyframes moveWave {
+    @keyframes waveMove {
       0%, 100% {
-        translate: -40px 0;
+        translate: -60px 0;
       }
       50% {
-        translate: 70px -30px;
+        translate: 90px -40px;
       }
     }
 
@@ -77,37 +80,42 @@
       position: fixed;
       inset: 0;
       background-image:
-        radial-gradient(#00ff66 1px, transparent 1px),
-        radial-gradient(#ffffff30 1px, transparent 1px);
-      background-size: 80px 80px, 120px 120px;
-      animation: particlesMove 18s linear infinite;
-      opacity: 0.35;
+        radial-gradient(rgba(0,255,90,0.7) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+      background-size: 80px 80px, 130px 130px;
+      animation: particlesMove 22s linear infinite;
+      opacity: 0.23;
       z-index: -1;
     }
 
     @keyframes particlesMove {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 400px 600px, -300px 400px; }
+      from {
+        background-position: 0 0, 0 0;
+      }
+      to {
+        background-position: 500px 600px, -350px 450px;
+      }
     }
 
     header {
       min-height: 100vh;
-      padding: 25px 7%;
-      position: relative;
+      padding: 26px 7%;
     }
 
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 80px;
+      gap: 25px;
+      margin-bottom: 100px;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 25px;
       font-weight: 900;
+      letter-spacing: 1px;
       color: white;
-      text-shadow: 0 0 12px #00ff66;
+      text-shadow: 0 0 14px #00ff66;
     }
 
     .logo span {
@@ -116,8 +124,10 @@
 
     nav ul {
       display: flex;
-      gap: 30px;
       list-style: none;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     nav a {
@@ -125,207 +135,238 @@
       text-decoration: none;
       font-size: 14px;
       text-shadow: 0 0 8px rgba(255,255,255,0.5);
-      transition: 0.3s;
+      transition: 0.25s;
     }
 
     nav a:hover {
       color: #22ff6a;
-      text-shadow: 0 0 15px #22ff6a;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 40px;
-      background: #22ff6a;
-      color: #031006;
-      text-decoration: none;
-      font-weight: 900;
-      box-shadow: 0 0 25px rgba(34,255,106,0.75);
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 45px rgba(34,255,106,1);
+      text-shadow: 0 0 16px #22ff6a;
     }
 
     .hero {
-      max-width: 900px;
-      padding-top: 40px;
+      max-width: 960px;
     }
 
     .tag {
       display: inline-block;
-      padding: 10px 22px;
-      border: 1px solid #22ff6a;
-      border-radius: 30px;
+      padding: 11px 22px;
+      border: 1px solid rgba(34,255,106,0.8);
+      border-radius: 40px;
+      margin-bottom: 28px;
       color: white;
-      margin-bottom: 25px;
-      box-shadow: 0 0 18px rgba(34,255,106,0.35);
+      box-shadow: 0 0 18px rgba(34,255,106,0.32);
+      background: rgba(0,0,0,0.35);
     }
 
     .hero h1 {
-      font-size: clamp(45px, 8vw, 95px);
-      line-height: 1.05;
+      font-size: clamp(44px, 8vw, 96px);
       text-transform: uppercase;
+      line-height: 1.04;
       color: white;
       text-shadow:
-        0 0 8px white,
-        0 0 20px rgba(34,255,106,0.65),
-        0 0 40px rgba(34,255,106,0.35);
-      margin-bottom: 25px;
+        0 0 10px white,
+        0 0 28px rgba(34,255,106,0.8),
+        0 0 60px rgba(34,255,106,0.35);
       animation: glowPulse 3s infinite ease-in-out;
     }
 
     @keyframes glowPulse {
       0%, 100% {
-        text-shadow: 0 0 8px white, 0 0 20px rgba(34,255,106,0.65);
+        text-shadow: 0 0 10px white, 0 0 28px rgba(34,255,106,0.8);
       }
       50% {
-        text-shadow: 0 0 14px white, 0 0 42px rgba(34,255,106,0.95);
+        text-shadow: 0 0 18px white, 0 0 55px rgba(34,255,106,1);
       }
     }
 
     .hero p {
+      max-width: 740px;
+      margin-top: 26px;
       font-size: 20px;
-      max-width: 680px;
       line-height: 1.7;
       color: white;
-      text-shadow: 0 0 8px rgba(255,255,255,0.4);
-      margin-bottom: 35px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.35);
     }
 
-    .hero-buttons {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 28px;
+      border-radius: 40px;
+      background: #22ff6a;
+      color: #020403;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 0 26px rgba(34,255,106,0.75);
+      transition: 0.25s;
     }
 
-    .btn-outline {
-      border: 1px solid #22ff6a;
-      background: rgba(0,0,0,0.35);
-      color: white;
-      box-shadow: 0 0 15px rgba(34,255,106,0.35);
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 48px rgba(34,255,106,1);
     }
 
     section {
-      padding: 80px 7%;
+      padding: 78px 7%;
     }
 
     .section-title {
       text-align: center;
-      font-size: 34px;
+      font-size: 38px;
       text-transform: uppercase;
-      margin-bottom: 45px;
-      text-shadow: 0 0 16px #22ff6a;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: -80px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .feature-box,
-    .product-card {
-      background: rgba(0,0,0,0.65);
-      border: 1px solid rgba(34,255,106,0.35);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 0 25px rgba(34,255,106,0.12);
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
-    }
-
-    .feature-box:hover,
-    .product-card:hover {
-      transform: translateY(-8px);
-      border-color: #22ff6a;
-      box-shadow: 0 0 35px rgba(34,255,106,0.45);
-    }
-
-    .feature-box h3,
-    .product-card h3 {
+      margin-bottom: 42px;
       color: white;
-      margin-bottom: 12px;
-      text-shadow: 0 0 10px #22ff6a;
+      text-shadow: 0 0 20px #22ff6a;
     }
 
-    .feature-box p,
-    .product-card p {
+    .intro {
+      max-width: 900px;
+      margin: 0 auto 45px;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 18px;
       color: white;
-      line-height: 1.6;
-      font-size: 15px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.25);
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 25px;
     }
 
-    .product-card {
-      min-height: 260px;
+    .card {
+      background: rgba(0,0,0,0.72);
+      border: 1px solid rgba(34,255,106,0.35);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 0 25px rgba(34,255,106,0.13);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
       position: relative;
       overflow: hidden;
     }
 
-    .product-card::before {
+    .card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(34,255,106,0.12));
+      background: linear-gradient(135deg, transparent, rgba(34,255,106,0.08));
       pointer-events: none;
     }
 
-    .product-icon {
-      font-size: 42px;
-      margin-bottom: 20px;
-      color: #22ff6a;
-      text-shadow: 0 0 20px #22ff6a;
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #22ff6a;
+      box-shadow: 0 0 38px rgba(34,255,106,0.45);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: white;
+      text-shadow: 0 0 14px #22ff6a;
     }
 
     .price {
-      margin-top: 20px;
-      font-size: 22px;
       color: #22ff6a;
-      font-weight: bold;
-      text-shadow: 0 0 10px #22ff6a;
+      font-size: 27px;
+      font-weight: 900;
+      margin: 18px 0;
+      text-shadow: 0 0 14px #22ff6a;
     }
 
-    .about {
-      max-width: 900px;
-      margin: auto;
+    .card p {
+      line-height: 1.7;
+      font-size: 15px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      margin: 15px 0 20px 18px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .pay-buttons {
+      margin-top: 22px;
+    }
+
+    .pay-buttons a {
+      display: block;
       text-align: center;
-      line-height: 1.8;
-      font-size: 18px;
-      text-shadow: 0 0 8px rgba(255,255,255,0.3);
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: 0.25s;
+    }
+
+    .paypal {
+      background: #0070ba;
+      color: white;
+    }
+
+    .cardpay {
+      background: white;
+      color: black;
+    }
+
+    .crypto {
+      background: #22ff6a;
+      color: black;
+    }
+
+    .pay-buttons a:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    .payments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .wallet {
+      word-break: break-all;
+      font-size: 14px;
+      color: #22ff6a;
+      text-shadow: 0 0 8px rgba(34,255,106,0.55);
+    }
+
+    .notice {
+      max-width: 900px;
+      margin: 35px auto 0;
+      text-align: center;
+      line-height: 1.7;
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid rgba(34,255,106,0.3);
+      background: rgba(0,0,0,0.65);
     }
 
     footer {
       padding: 40px 7%;
-      border-top: 1px solid rgba(34,255,106,0.25);
       text-align: center;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.82);
+      border-top: 1px solid rgba(34,255,106,0.28);
+      line-height: 1.8;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 850px) {
       nav {
         flex-direction: column;
-        gap: 25px;
       }
 
       nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 14px;
       }
 
-      .features {
-        margin-top: 0;
+      .hero {
+        text-align: center;
       }
     }
   </style>
@@ -333,11 +374,10 @@
 
 <body>
 
-  <div class="background">
-    <div class="wave one"></div>
-    <div class="wave two"></div>
-    <div class="wave three"></div>
-  </div>
+  <div class="bg"></div>
+  <div class="wave one"></div>
+  <div class="wave two"></div>
+  <div class="wave three"></div>
   <div class="particles"></div>
 
   <header id="home">
@@ -347,121 +387,305 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#products">Products</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#payments">Payments</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
-      <a href="#products" class="btn">Get Started</a>
     </nav>
 
     <div class="hero">
-      <div class="tag">Precision • Performance • Profitability</div>
+      <div class="tag">Trading Indicators • Automated Systems • Market Tools</div>
 
-      <h1>FX1ND1CATORS<br>Elevate Your Trading</h1>
+      <h1>FX1ND1CATORS</h1>
 
       <p>
-        Advanced trading indicators built for traders who want clarity,
-        structure, and confidence in the markets.
+        Professional trading indicators, automated trading systems and technical
+        analysis tools built for traders who want structure, precision and smarter
+        market decision-making.
       </p>
 
-      <div class="hero-buttons">
-        <a href="#products" class="btn">Explore Products</a>
-        <a href="#about" class="btn btn-outline">Learn More</a>
-      </div>
+      <a href="#products" class="btn">View Products</a>
     </div>
   </header>
 
-  <section id="features">
-    <div class="features">
-      <div class="feature-box">
-        <h3>Advanced Technology</h3>
-        <p>Indicators designed to support smarter market analysis.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>Real-Time Data</h3>
-        <p>Tools designed to help traders react to changing market conditions.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>Risk Focused</h3>
-        <p>Built to support cleaner decision-making and disciplined trading.</p>
-      </div>
-
-      <div class="feature-box">
-        <h3>User Friendly</h3>
-        <p>Simple, clean, and easy-to-understand trading tools.</p>
-      </div>
-    </div>
-  </section>
-
   <section id="products">
-    <h2 class="section-title">Our Products</h2>
+    <h2 class="section-title">Products</h2>
+
+    <p class="intro">
+      Choose from professional trading indicators, automation tools and structured
+      trading systems. After payment, send your payment proof, product name and
+      delivery email so your product can be delivered.
+    </p>
 
     <div class="products">
 
-      <!-- PRODUCT 1 -->
-      <div class="product-card">
-        <div class="product-icon">📈</div>
-        <h3>FX1 Smart Trend</h3>
+      <div class="card">
+        <h3>Forever Model Pro Sniper</h3>
+        <div class="price">$15</div>
         <p>
-          A trend-focused indicator designed to help identify market direction,
-          momentum, and potential trading opportunities.
+          A fully automated market-rotation framework built around Internal Range
+          Liquidity, SMT divergence and Change in State of Delivery.
         </p>
-        <div class="price">£29.99</div>
+        <p>
+          The model studies liquidity tags, fair value gaps, divergence between
+          correlated assets, CISD candles, orderblock candidates, liquidity sweeps
+          and external range liquidity.
+        </p>
+        <ul>
+          <li>Internal Range Liquidity and FVG detection</li>
+          <li>SMT divergence analysis</li>
+          <li>CISD and orderblock candidate detection</li>
+          <li>Model history control and backtest support</li>
+          <li>Directional bias filters</li>
+          <li>Session and timezone filters</li>
+          <li>Information table and visual markers</li>
+          <li>Customizable settings for different markets and timeframes</li>
+        </ul>
+        <p>
+          Designed for analysts who want a cleaner way to study market rotations
+          using sniper-style structure, liquidity and delivery logic.
+        </p>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
       </div>
 
-      <!-- PRODUCT 2 -->
-      <div class="product-card">
-        <div class="product-icon">💧</div>
-        <h3>FX1 Liquidity Finder</h3>
+      <div class="card">
+        <h3>The LFXP Universe</h3>
+        <div class="price">$229</div>
         <p>
-          A tool created to highlight possible liquidity zones and important
-          levels where price may react.
+          The complete LFXP package for traders who want access to the full toolkit.
         </p>
-        <div class="price">£39.99</div>
+        <ul>
+          <li>Includes all 4 indicators</li>
+          <li>Includes the automated trading bot</li>
+          <li>Best-value complete bundle</li>
+          <li>Designed for traders who want both manual tools and automation</li>
+        </ul>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
       </div>
 
-      <!-- PRODUCT 3 -->
-      <div class="product-card">
-        <div class="product-icon">⚡</div>
-        <h3>FX1 Volume Pro</h3>
+      <div class="card">
+        <h3>The LFXP System</h3>
+        <div class="price">$79</div>
         <p>
-          A volume-based tool designed to help traders understand strength,
-          weakness, and market participation.
+          A structured indicator package containing all four LFXP indicators.
         </p>
-        <div class="price">£49.99</div>
+        <ul>
+          <li>Includes all 4 LFXP indicators</li>
+          <li>Designed for manual technical analysis</li>
+          <li>Useful for structured entries and trade planning</li>
+          <li>Built for traders who want a full indicator system without the bot</li>
+        </ul>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
       </div>
 
-      <!-- PRODUCT 4 -->
-      <div class="product-card">
-        <div class="product-icon">🛡️</div>
-        <h3>FX1 Market Structure</h3>
+      <div class="card">
+        <h3>LFXPBot</h3>
+        <div class="price">$199.99</div>
         <p>
-          A structure-based indicator built to help traders identify highs,
-          lows, breaks, and trend continuation areas.
+          LFXPBot is a next-generation automated trading system built for
+          MetaTrader 5 and optimized for PuPrime MT5 accounts.
         </p>
-        <div class="price">£59.99</div>
+        <p>
+          It combines trend analysis, momentum confirmation, volatility-based
+          management, dynamic equity-based lot sizing and automated trade
+          execution into one professional trading solution.
+        </p>
+        <ul>
+          <li>Fully automated MT5 trading system</li>
+          <li>Optimized for PuPrime MT5 accounts</li>
+          <li>EMA, RSI and ATR strategy framework</li>
+          <li>Dynamic balance/equity-based lot sizing</li>
+          <li>Built-in stop loss and take profit management</li>
+          <li>ATR trailing stop and breakeven protection</li>
+          <li>Daily loss and consecutive loss protection</li>
+          <li>Spread, volatility and trading session filters</li>
+          <li>VPS compatible for 24/5 operation</li>
+          <li>MT5 Strategy Tester support</li>
+        </ul>
+        <p>
+          Built around intelligent risk management, controlled drawdown,
+          disciplined execution and long-term account sustainability.
+        </p>
+        <p>
+          Recommended environment: PuPrime MT5, MetaTrader 5, VPS hosting and
+          automated intraday trend-following execution.
+        </p>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>LFXP DTC-Style Strategy</h3>
+        <div class="price">$50</div>
+        <p>
+          A professional trend, momentum and structure trading strategy designed
+          to identify high-probability market opportunities through confirmation,
+          volatility filtering and structured risk management.
+        </p>
+        <ul>
+          <li>EMA trend alignment using 20, 50 and 200 EMAs</li>
+          <li>Market structure breakout entries</li>
+          <li>ATR volatility filter</li>
+          <li>Customizable stop loss and take profit settings</li>
+          <li>Multiple take-profit levels from 1R to 5R</li>
+          <li>Buy and sell signal visualization</li>
+          <li>Multi-timeframe trend dashboard</li>
+          <li>Dynamic risk management framework</li>
+          <li>Structured trade management logic</li>
+        </ul>
+        <p>
+          Designed for intraday traders, swing traders and users who want
+          repeatable rule-based trading with structure and discipline.
+        </p>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>MACD Based Price Forecasting</h3>
+        <div class="price">$30</div>
+        <p>
+          A forecasting indicator that helps visualize the area where price may
+          move after a specific MACD signal.
+        </p>
+        <p>
+          Forecasting areas can also act as potential support and resistance
+          zones. The width of the forecast is based on percentile settings.
+        </p>
+        <ul>
+          <li>Fast, slow and signal MACD length settings</li>
+          <li>Trend determination settings</li>
+          <li>Forecasting horizon in bars</li>
+          <li>Maximum memory control</li>
+          <li>Top, average and lower percentile forecast bands</li>
+          <li>Useful for visual price projection zones</li>
+        </ul>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>ML Probability Prediction Indicator</h3>
+        <div class="price">$35</div>
+        <p>
+          A machine-learning-inspired probabilistic trading model designed to
+          estimate the likelihood of future price direction using weighted market
+          features.
+        </p>
+        <p>
+          Instead of relying on one indicator, it combines normalized momentum,
+          trend, volatility, oscillator and volume features into a probability
+          score.
+        </p>
+        <ul>
+          <li>Probability-based trade filtering</li>
+          <li>Multi-factor signal generation</li>
+          <li>ML-style feature aggregation</li>
+          <li>Momentum, trend, volatility, RSI and volume features</li>
+          <li>Long and short threshold logic</li>
+          <li>Triple-barrier style directional analysis</li>
+          <li>Built for externally trained ML weights</li>
+          <li>Useful for crypto, futures, forex and intraday systems</li>
+        </ul>
+        <p>
+          Ideal for traders using quantitative discretionary trading, systematic
+          directional trading and ML-assisted execution models.
+        </p>
+
+        <div class="pay-buttons">
+          <a class="paypal" href="#payments">Pay with PayPal</a>
+          <a class="cardpay" href="#payments">Pay by Card</a>
+          <a class="crypto" href="#payments">Pay with Crypto</a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <section id="about">
-    <h2 class="section-title">About FX1ND1CATORS</h2>
+  <section id="payments">
+    <h2 class="section-title">Payment Methods</h2>
 
-    <div class="about">
+    <p class="intro">
+      Select your product, send payment using one of the methods below, then
+      contact us with proof of payment, product name and delivery email.
+    </p>
+
+    <div class="payments-grid">
+
+      <div class="card">
+        <h3>PayPal</h3>
+        <p>Send payment to:</p>
+        <p class="wallet">songsongisntme34@gmail.com</p>
+        <p>
+          After paying, include your product name and delivery email in your
+          message.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Bitcoin BTC</h3>
+        <p class="wallet">bc1qsek6vnxgrfksczhfgzsyyl4drmlmly6qrnuk32</p>
+      </div>
+
+      <div class="card">
+        <h3>Litecoin LTC</h3>
+        <p class="wallet">LRyYtvVaSeViPxgAW3CqfZMqMtPuduWPG6</p>
+      </div>
+
+      <div class="card">
+        <h3>Solana SOL</h3>
+        <p class="wallet">MdqWGKAfghH9qPrrsubbMxRRVS2voXMsHYM6pFiw1E6</p>
+      </div>
+
+      <div class="card">
+        <h3>Ethereum ETH</h3>
+        <p class="wallet">0x44c1901C8dB9F9fdF0250d7bb4E59398827C9041</p>
+      </div>
+
+      <div class="card">
+        <h3>Bank Card</h3>
+        <p>
+          Card checkout link coming soon. You can add Stripe, PayPal checkout,
+          or another payment processor later.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="notice">
       <p>
-        FX1ND1CATORS is a trading tool brand focused on helping traders analyse
-        markets with more confidence. Our goal is to create clean, powerful,
-        and easy-to-use indicators that support technical analysis, market
-        structure, trend direction, and risk awareness.
+        Important: crypto payments are normally irreversible. Always check the
+        wallet address before sending payment.
       </p>
-      <br>
       <p>
-        Every product is designed to help traders make clearer decisions while
-        encouraging discipline, patience, and responsible trading.
+        Trading involves risk. Past performance does not guarantee future results.
+        Products are provided for educational and technical analysis purposes.
       </p>
     </div>
   </section>
@@ -469,15 +693,24 @@
   <section id="contact">
     <h2 class="section-title">Contact</h2>
 
-    <div class="about">
-      <p>Email: your-email@example.com</p>
-      <p>Instagram: @fx1nd1cators</p>
-      <p>Website: fx1nd1cators.com</p>
+    <div class="card">
+      <h3>Delivery Instructions</h3>
+      <p>
+        After payment, send your proof of payment, transaction ID, selected
+        product name and delivery email.
+      </p>
+      <p>
+        PayPal Email: <span class="wallet">songsongisntme34@gmail.com</span>
+      </p>
+      <p>
+        Instagram: <span class="wallet">@fx1nd1cators</span>
+      </p>
     </div>
   </section>
 
   <footer>
     <p>© 2026 FX1ND1CATORS. All rights reserved.</p>
+    <p>Trading involves risk. Past performance does not guarantee future results.</p>
   </footer>
 
 </body>
