@@ -1,0 +1,485 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FX1ND1CATORS | Trading Tools</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Orbitron", Arial, sans-serif;
+      background: #020403;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animated black and green wave background */
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: radial-gradient(circle at top, #061f0d 0%, #020403 45%, #000 100%);
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      width: 160%;
+      height: 260px;
+      left: -30%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,90,0.75), transparent);
+      filter: blur(28px);
+      opacity: 0.35;
+      animation: moveWave 8s infinite ease-in-out;
+    }
+
+    .wave.one {
+      top: 20%;
+      transform: rotate(-10deg);
+    }
+
+    .wave.two {
+      top: 55%;
+      transform: rotate(12deg);
+      animation-delay: 2s;
+      opacity: 0.25;
+    }
+
+    .wave.three {
+      top: 80%;
+      transform: rotate(-8deg);
+      animation-delay: 4s;
+      opacity: 0.18;
+    }
+
+    @keyframes moveWave {
+      0%, 100% {
+        translate: -40px 0;
+      }
+      50% {
+        translate: 70px -30px;
+      }
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(#00ff66 1px, transparent 1px),
+        radial-gradient(#ffffff30 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      animation: particlesMove 18s linear infinite;
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    @keyframes particlesMove {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 400px 600px, -300px 400px; }
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 25px 7%;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 80px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      color: white;
+      text-shadow: 0 0 12px #00ff66;
+    }
+
+    .logo span {
+      color: #22ff6a;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.5);
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #22ff6a;
+      text-shadow: 0 0 15px #22ff6a;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 40px;
+      background: #22ff6a;
+      color: #031006;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(34,255,106,0.75);
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 45px rgba(34,255,106,1);
+    }
+
+    .hero {
+      max-width: 900px;
+      padding-top: 40px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid #22ff6a;
+      border-radius: 30px;
+      color: white;
+      margin-bottom: 25px;
+      box-shadow: 0 0 18px rgba(34,255,106,0.35);
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 95px);
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: white;
+      text-shadow:
+        0 0 8px white,
+        0 0 20px rgba(34,255,106,0.65),
+        0 0 40px rgba(34,255,106,0.35);
+      margin-bottom: 25px;
+      animation: glowPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow: 0 0 8px white, 0 0 20px rgba(34,255,106,0.65);
+      }
+      50% {
+        text-shadow: 0 0 14px white, 0 0 42px rgba(34,255,106,0.95);
+      }
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 680px;
+      line-height: 1.7;
+      color: white;
+      text-shadow: 0 0 8px rgba(255,255,255,0.4);
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      border: 1px solid #22ff6a;
+      background: rgba(0,0,0,0.35);
+      color: white;
+      box-shadow: 0 0 15px rgba(34,255,106,0.35);
+    }
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      text-transform: uppercase;
+      margin-bottom: 45px;
+      text-shadow: 0 0 16px #22ff6a;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: -80px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .feature-box,
+    .product-card {
+      background: rgba(0,0,0,0.65);
+      border: 1px solid rgba(34,255,106,0.35);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 0 25px rgba(34,255,106,0.12);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .feature-box:hover,
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: #22ff6a;
+      box-shadow: 0 0 35px rgba(34,255,106,0.45);
+    }
+
+    .feature-box h3,
+    .product-card h3 {
+      color: white;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px #22ff6a;
+    }
+
+    .feature-box p,
+    .product-card p {
+      color: white;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(34,255,106,0.12));
+      pointer-events: none;
+    }
+
+    .product-icon {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #22ff6a;
+      text-shadow: 0 0 20px #22ff6a;
+    }
+
+    .price {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #22ff6a;
+      font-weight: bold;
+      text-shadow: 0 0 10px #22ff6a;
+    }
+
+    .about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.8;
+      font-size: 18px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+
+    footer {
+      padding: 40px 7%;
+      border-top: 1px solid rgba(34,255,106,0.25);
+      text-align: center;
+      background: rgba(0,0,0,0.7);
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .features {
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background">
+    <div class="wave one"></div>
+    <div class="wave two"></div>
+    <div class="wave three"></div>
+  </div>
+  <div class="particles"></div>
+
+  <header id="home">
+    <nav>
+      <div class="logo"><span>FX1</span>ND1CATORS</div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="#products" class="btn">Get Started</a>
+    </nav>
+
+    <div class="hero">
+      <div class="tag">Precision • Performance • Profitability</div>
+
+      <h1>FX1ND1CATORS<br>Elevate Your Trading</h1>
+
+      <p>
+        Advanced trading indicators built for traders who want clarity,
+        structure, and confidence in the markets.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#products" class="btn">Explore Products</a>
+        <a href="#about" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="features">
+      <div class="feature-box">
+        <h3>Advanced Technology</h3>
+        <p>Indicators designed to support smarter market analysis.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Real-Time Data</h3>
+        <p>Tools designed to help traders react to changing market conditions.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Risk Focused</h3>
+        <p>Built to support cleaner decision-making and disciplined trading.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>User Friendly</h3>
+        <p>Simple, clean, and easy-to-understand trading tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2 class="section-title">Our Products</h2>
+
+    <div class="products">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+        <div class="product-icon">📈</div>
+        <h3>FX1 Smart Trend</h3>
+        <p>
+          A trend-focused indicator designed to help identify market direction,
+          momentum, and potential trading opportunities.
+        </p>
+        <div class="price">£29.99</div>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <div class="product-icon">💧</div>
+        <h3>FX1 Liquidity Finder</h3>
+        <p>
+          A tool created to highlight possible liquidity zones and important
+          levels where price may react.
+        </p>
+        <div class="price">£39.99</div>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <div class="product-icon">⚡</div>
+        <h3>FX1 Volume Pro</h3>
+        <p>
+          A volume-based tool designed to help traders understand strength,
+          weakness, and market participation.
+        </p>
+        <div class="price">£49.99</div>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <div class="product-icon">🛡️</div>
+        <h3>FX1 Market Structure</h3>
+        <p>
+          A structure-based indicator built to help traders identify highs,
+          lows, breaks, and trend continuation areas.
+        </p>
+        <div class="price">£59.99</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About FX1ND1CATORS</h2>
+
+    <div class="about">
+      <p>
+        FX1ND1CATORS is a trading tool brand focused on helping traders analyse
+        markets with more confidence. Our goal is to create clean, powerful,
+        and easy-to-use indicators that support technical analysis, market
+        structure, trend direction, and risk awareness.
+      </p>
+      <br>
+      <p>
+        Every product is designed to help traders make clearer decisions while
+        encouraging discipline, patience, and responsible trading.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="about">
+      <p>Email: your-email@example.com</p>
+      <p>Instagram: @fx1nd1cators</p>
+      <p>Website: fx1nd1cators.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 FX1ND1CATORS. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+```
