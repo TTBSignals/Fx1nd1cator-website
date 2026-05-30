@@ -8,20 +8,14 @@
   <title>FX1ND1CATORS | Trading Indicators & Automated Systems</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, sans-serif;
       background: #020403;
-      color: #ffffff;
+      color: white;
       overflow-x: hidden;
     }
 
@@ -32,7 +26,7 @@
       background:
         radial-gradient(circle at top left, rgba(0,255,90,0.22), transparent 28%),
         radial-gradient(circle at bottom right, rgba(0,255,90,0.16), transparent 28%),
-        #000000;
+        #000;
     }
 
     .wave {
@@ -48,32 +42,13 @@
       animation: waveMove 10s infinite ease-in-out;
     }
 
-    .wave.one {
-      top: 18%;
-      transform: rotate(-9deg);
-    }
-
-    .wave.two {
-      top: 58%;
-      transform: rotate(11deg);
-      animation-delay: 3s;
-      opacity: 0.22;
-    }
-
-    .wave.three {
-      top: 82%;
-      transform: rotate(-5deg);
-      animation-delay: 5s;
-      opacity: 0.16;
-    }
+    .wave.one { top: 18%; transform: rotate(-9deg); }
+    .wave.two { top: 58%; transform: rotate(11deg); animation-delay: 3s; opacity: 0.22; }
+    .wave.three { top: 82%; transform: rotate(-5deg); animation-delay: 5s; opacity: 0.16; }
 
     @keyframes waveMove {
-      0%, 100% {
-        translate: -60px 0;
-      }
-      50% {
-        translate: 90px -40px;
-      }
+      0%, 100% { translate: -60px 0; }
+      50% { translate: 90px -40px; }
     }
 
     .particles {
@@ -89,12 +64,8 @@
     }
 
     @keyframes particlesMove {
-      from {
-        background-position: 0 0, 0 0;
-      }
-      to {
-        background-position: 500px 600px, -350px 450px;
-      }
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 500px 600px, -350px 450px; }
     }
 
     header {
@@ -114,13 +85,10 @@
       font-size: 25px;
       font-weight: 900;
       letter-spacing: 1px;
-      color: white;
       text-shadow: 0 0 14px #00ff66;
     }
 
-    .logo span {
-      color: #22ff6a;
-    }
+    .logo span { color: #22ff6a; }
 
     nav ul {
       display: flex;
@@ -143,9 +111,7 @@
       text-shadow: 0 0 16px #22ff6a;
     }
 
-    .hero {
-      max-width: 960px;
-    }
+    .hero { max-width: 960px; }
 
     .tag {
       display: inline-block;
@@ -153,7 +119,6 @@
       border: 1px solid rgba(34,255,106,0.8);
       border-radius: 40px;
       margin-bottom: 28px;
-      color: white;
       box-shadow: 0 0 18px rgba(34,255,106,0.32);
       background: rgba(0,0,0,0.35);
     }
@@ -162,7 +127,6 @@
       font-size: clamp(44px, 8vw, 96px);
       text-transform: uppercase;
       line-height: 1.04;
-      color: white;
       text-shadow:
         0 0 10px white,
         0 0 28px rgba(34,255,106,0.8),
@@ -171,12 +135,8 @@
     }
 
     @keyframes glowPulse {
-      0%, 100% {
-        text-shadow: 0 0 10px white, 0 0 28px rgba(34,255,106,0.8);
-      }
-      50% {
-        text-shadow: 0 0 18px white, 0 0 55px rgba(34,255,106,1);
-      }
+      0%, 100% { text-shadow: 0 0 10px white, 0 0 28px rgba(34,255,106,0.8); }
+      50% { text-shadow: 0 0 18px white, 0 0 55px rgba(34,255,106,1); }
     }
 
     .hero p {
@@ -184,7 +144,6 @@
       margin-top: 26px;
       font-size: 20px;
       line-height: 1.7;
-      color: white;
       text-shadow: 0 0 8px rgba(255,255,255,0.35);
     }
 
@@ -206,16 +165,13 @@
       box-shadow: 0 0 48px rgba(34,255,106,1);
     }
 
-    section {
-      padding: 78px 7%;
-    }
+    section { padding: 78px 7%; }
 
     .section-title {
       text-align: center;
       font-size: 38px;
       text-transform: uppercase;
       margin-bottom: 42px;
-      color: white;
       text-shadow: 0 0 20px #22ff6a;
     }
 
@@ -225,11 +181,10 @@
       text-align: center;
       line-height: 1.8;
       font-size: 18px;
-      color: white;
       text-shadow: 0 0 8px rgba(255,255,255,0.25);
     }
 
-    .products {
+    .products, .payments-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 25px;
@@ -247,14 +202,6 @@
       overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(34,255,106,0.08));
-      pointer-events: none;
-    }
-
     .card:hover {
       transform: translateY(-8px);
       border-color: #22ff6a;
@@ -264,7 +211,6 @@
     .card h3 {
       font-size: 24px;
       margin-bottom: 12px;
-      color: white;
       text-shadow: 0 0 14px #22ff6a;
     }
 
@@ -279,7 +225,6 @@
     .card p {
       line-height: 1.7;
       font-size: 15px;
-      color: white;
       margin-bottom: 12px;
     }
 
@@ -289,9 +234,7 @@
       font-size: 14px;
     }
 
-    .pay-buttons {
-      margin-top: 22px;
-    }
+    .pay-buttons { margin-top: 22px; }
 
     .pay-buttons a {
       display: block;
@@ -304,30 +247,13 @@
       transition: 0.25s;
     }
 
-    .paypal {
-      background: #0070ba;
-      color: white;
-    }
-
-    .cardpay {
-      background: white;
-      color: black;
-    }
-
-    .crypto {
-      background: #22ff6a;
-      color: black;
-    }
+    .paypal { background: #0070ba; color: white; }
+    .cardpay { background: white; color: black; }
+    .crypto { background: #22ff6a; color: black; }
 
     .pay-buttons a:hover {
       transform: translateY(-3px);
       filter: brightness(1.1);
-    }
-
-    .payments-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
     }
 
     .wallet {
@@ -338,14 +264,26 @@
     }
 
     .notice {
-      max-width: 900px;
+      max-width: 950px;
       margin: 35px auto 0;
-      text-align: center;
       line-height: 1.7;
-      padding: 24px;
+      padding: 28px;
       border-radius: 18px;
       border: 1px solid rgba(34,255,106,0.3);
-      background: rgba(0,0,0,0.65);
+      background: rgba(0,0,0,0.72);
+      box-shadow: 0 0 25px rgba(34,255,106,0.13);
+    }
+
+    .notice h3 {
+      color: #22ff6a;
+      margin-bottom: 15px;
+      text-shadow: 0 0 14px #22ff6a;
+    }
+
+    .notice ul {
+      margin-left: 25px;
+      margin-top: 10px;
+      line-height: 1.8;
     }
 
     footer {
@@ -357,17 +295,9 @@
     }
 
     @media (max-width: 850px) {
-      nav {
-        flex-direction: column;
-      }
-
-      nav ul {
-        gap: 14px;
-      }
-
-      .hero {
-        text-align: center;
-      }
+      nav { flex-direction: column; }
+      nav ul { gap: 14px; }
+      .hero { text-align: center; }
     }
   </style>
 </head>
@@ -412,8 +342,8 @@
 
     <p class="intro">
       Choose from professional trading indicators, automation tools and structured
-      trading systems. After payment, send your payment proof, product name and
-      delivery email so your product can be delivered.
+      trading systems. After payment, send confirmation and open a ticket showing
+      the purchased product for super fast delivery.
     </p>
 
     <div class="products">
@@ -425,26 +355,18 @@
           A fully automated market-rotation framework built around Internal Range
           Liquidity, SMT divergence and Change in State of Delivery.
         </p>
-        <p>
-          The model studies liquidity tags, fair value gaps, divergence between
-          correlated assets, CISD candles, orderblock candidates, liquidity sweeps
-          and external range liquidity.
-        </p>
         <ul>
           <li>Internal Range Liquidity and FVG detection</li>
           <li>SMT divergence analysis</li>
           <li>CISD and orderblock candidate detection</li>
-          <li>Model history control and backtest support</li>
           <li>Directional bias filters</li>
           <li>Session and timezone filters</li>
-          <li>Information table and visual markers</li>
-          <li>Customizable settings for different markets and timeframes</li>
+          <li>Model history control and backtest support</li>
         </ul>
         <p>
           Designed for analysts who want a cleaner way to study market rotations
           using sniper-style structure, liquidity and delivery logic.
         </p>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -456,15 +378,14 @@
         <h3>The LFXP Universe</h3>
         <div class="price">$229</div>
         <p>
-          The complete LFXP package for traders who want access to the full toolkit.
+          The complete LFXP package containing all 4 indicators and the automated
+          trading bot.
         </p>
         <ul>
           <li>Includes all 4 indicators</li>
-          <li>Includes the automated trading bot</li>
+          <li>Includes LFXPBot</li>
           <li>Best-value complete bundle</li>
-          <li>Designed for traders who want both manual tools and automation</li>
         </ul>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -476,15 +397,14 @@
         <h3>The LFXP System</h3>
         <div class="price">$79</div>
         <p>
-          A structured indicator package containing all four LFXP indicators.
+          A structured indicator package containing all four LFXP indicators for
+          manual technical analysis and trade planning.
         </p>
         <ul>
           <li>Includes all 4 LFXP indicators</li>
-          <li>Designed for manual technical analysis</li>
-          <li>Useful for structured entries and trade planning</li>
-          <li>Built for traders who want a full indicator system without the bot</li>
+          <li>Designed for manual analysis</li>
+          <li>Useful for structured entries and planning</li>
         </ul>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -496,35 +416,24 @@
         <h3>LFXPBot</h3>
         <div class="price">$199.99</div>
         <p>
-          LFXPBot is a next-generation automated trading system built for
-          MetaTrader 5 and optimized for PuPrime MT5 accounts.
-        </p>
-        <p>
-          It combines trend analysis, momentum confirmation, volatility-based
-          management, dynamic equity-based lot sizing and automated trade
-          execution into one professional trading solution.
+          A next-generation automated trading system built for MetaTrader 5 and
+          optimized for PuPrime MT5 accounts.
         </p>
         <ul>
           <li>Fully automated MT5 trading system</li>
-          <li>Optimized for PuPrime MT5 accounts</li>
           <li>EMA, RSI and ATR strategy framework</li>
           <li>Dynamic balance/equity-based lot sizing</li>
-          <li>Built-in stop loss and take profit management</li>
+          <li>Built-in stop loss and take profit</li>
           <li>ATR trailing stop and breakeven protection</li>
           <li>Daily loss and consecutive loss protection</li>
-          <li>Spread, volatility and trading session filters</li>
+          <li>Spread, volatility and session filters</li>
           <li>VPS compatible for 24/5 operation</li>
           <li>MT5 Strategy Tester support</li>
         </ul>
         <p>
-          Built around intelligent risk management, controlled drawdown,
-          disciplined execution and long-term account sustainability.
+          Built around intelligent risk management, disciplined execution and
+          long-term account sustainability.
         </p>
-        <p>
-          Recommended environment: PuPrime MT5, MetaTrader 5, VPS hosting and
-          automated intraday trend-following execution.
-        </p>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -537,25 +446,18 @@
         <div class="price">$50</div>
         <p>
           A professional trend, momentum and structure trading strategy designed
-          to identify high-probability market opportunities through confirmation,
-          volatility filtering and structured risk management.
+          to identify high-probability market opportunities.
         </p>
         <ul>
           <li>EMA trend alignment using 20, 50 and 200 EMAs</li>
           <li>Market structure breakout entries</li>
           <li>ATR volatility filter</li>
-          <li>Customizable stop loss and take profit settings</li>
+          <li>Custom stop loss and take profit settings</li>
           <li>Multiple take-profit levels from 1R to 5R</li>
           <li>Buy and sell signal visualization</li>
           <li>Multi-timeframe trend dashboard</li>
-          <li>Dynamic risk management framework</li>
           <li>Structured trade management logic</li>
         </ul>
-        <p>
-          Designed for intraday traders, swing traders and users who want
-          repeatable rule-based trading with structure and discipline.
-        </p>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -567,22 +469,17 @@
         <h3>MACD Based Price Forecasting</h3>
         <div class="price">$30</div>
         <p>
-          A forecasting indicator that helps visualize the area where price may
-          move after a specific MACD signal.
-        </p>
-        <p>
-          Forecasting areas can also act as potential support and resistance
-          zones. The width of the forecast is based on percentile settings.
+          A forecasting indicator that helps visualize where price may move after
+          a MACD signal.
         </p>
         <ul>
-          <li>Fast, slow and signal MACD length settings</li>
+          <li>Fast, slow and signal MACD settings</li>
           <li>Trend determination settings</li>
           <li>Forecasting horizon in bars</li>
           <li>Maximum memory control</li>
           <li>Top, average and lower percentile forecast bands</li>
-          <li>Useful for visual price projection zones</li>
+          <li>Useful for visual support and resistance zones</li>
         </ul>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -595,13 +492,7 @@
         <div class="price">$35</div>
         <p>
           A machine-learning-inspired probabilistic trading model designed to
-          estimate the likelihood of future price direction using weighted market
-          features.
-        </p>
-        <p>
-          Instead of relying on one indicator, it combines normalized momentum,
-          trend, volatility, oscillator and volume features into a probability
-          score.
+          estimate future price direction using weighted market features.
         </p>
         <ul>
           <li>Probability-based trade filtering</li>
@@ -610,14 +501,8 @@
           <li>Momentum, trend, volatility, RSI and volume features</li>
           <li>Long and short threshold logic</li>
           <li>Triple-barrier style directional analysis</li>
-          <li>Built for externally trained ML weights</li>
           <li>Useful for crypto, futures, forex and intraday systems</li>
         </ul>
-        <p>
-          Ideal for traders using quantitative discretionary trading, systematic
-          directional trading and ML-assisted execution models.
-        </p>
-
         <div class="pay-buttons">
           <a class="paypal" href="#payments">Pay with PayPal</a>
           <a class="cardpay" href="#payments">Pay by Card</a>
@@ -632,8 +517,9 @@
     <h2 class="section-title">Payment Methods</h2>
 
     <p class="intro">
-      Select your product, send payment using one of the methods below, then
-      contact us with proof of payment, product name and delivery email.
+      Select your product, send payment using one of the methods below, then open
+      a ticket with screenshot confirmation of payment and the purchased product.
+      Super fast delivery.
     </p>
 
     <div class="payments-grid">
@@ -643,8 +529,8 @@
         <p>Send payment to:</p>
         <p class="wallet">songsongisntme34@gmail.com</p>
         <p>
-          After paying, include your product name and delivery email in your
-          message.
+          After paying, open a ticket with screenshot confirmation, product name
+          and delivery email.
         </p>
       </div>
 
@@ -671,18 +557,50 @@
       <div class="card">
         <h3>Bank Card</h3>
         <p>
-          Card checkout link coming soon. You can add Stripe, PayPal checkout,
-          or another payment processor later.
+          Card checkout link coming soon. You can add Stripe, PayPal checkout or
+          another payment processor later.
         </p>
       </div>
 
     </div>
 
     <div class="notice">
+      <h3>Crypto Payment Instructions</h3>
+
+      <p>1. Select the product you would like to purchase.</p>
+      <p>2. Send the correct amount of BTC, LTC, SOL or ETH to the wallet address provided.</p>
+      <p>3. Take a screenshot of the completed transaction confirmation.</p>
+      <p>4. Open a support ticket and include:</p>
+
+      <ul>
+        <li>Your payment screenshot</li>
+        <li>Transaction ID (TXID)</li>
+        <li>Purchased product name</li>
+        <li>Your email address</li>
+        <li>Your TradingView username if required</li>
+        <li>Your MT5 details if required</li>
+      </ul>
+
+      <br>
+
       <p>
-        Important: crypto payments are normally irreversible. Always check the
-        wallet address before sending payment.
+        <strong style="color:#22ff6a;">Super Fast Delivery</strong>
       </p>
+
+      <p>
+        Once payment has been verified, your product will be delivered as quickly
+        as possible. Most orders are processed shortly after confirmation is received.
+      </p>
+
+      <br>
+
+      <p>
+        Please double-check wallet addresses before sending cryptocurrency.
+        Cryptocurrency transactions are irreversible once confirmed on the blockchain.
+      </p>
+    </div>
+
+    <div class="notice">
       <p>
         Trading involves risk. Past performance does not guarantee future results.
         Products are provided for educational and technical analysis purposes.
@@ -696,8 +614,8 @@
     <div class="card">
       <h3>Delivery Instructions</h3>
       <p>
-        After payment, send your proof of payment, transaction ID, selected
-        product name and delivery email.
+        After payment, open a ticket with your screenshot confirmation, transaction
+        ID, selected product name and delivery email.
       </p>
       <p>
         PayPal Email: <span class="wallet">songsongisntme34@gmail.com</span>
