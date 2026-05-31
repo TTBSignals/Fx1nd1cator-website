@@ -316,6 +316,7 @@
 
       <ul>
         <li><a href="#home">Home</a></li>
+        <li><a href="#signals" onclick="showSignalsPage()">Free Trading Signals</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#payments">Payments</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -625,6 +626,175 @@
       </p>
     </div>
   </section>
+```html
+<section id="signals" class="signals-page">
+  <h2 class="signals-title">TTBSignals</h2>
+
+  <p class="signals-intro">
+    TTBSignals is a free Telegram trading signals community built to help new and
+    inexperienced traders understand the markets with more confidence. The group
+    was created from real experience — starting from copying signals, learning
+    through mistakes, and growing into helping others trade with better structure,
+    patience, and risk awareness.
+  </p>
+
+  <p class="signals-intro">
+    Our goal is simple: provide free trading signals, market updates, trade ideas,
+    and educational support for traders who want guidance without feeling lost.
+    TTBSignals focuses on helping people learn while also giving them access to
+    clear trading opportunities.
+  </p>
+
+  <div class="signal-buttons">
+    <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
+    <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
+    <a href="#home" onclick="showMainPage()">Back to FX1ND1CATORS</a>
+  </div>
+
+  <h3 class="signals-subtitle">Community Feedback</h3>
+
+  <div class="testimonials">
+    <div class="quote">“TTBSignals helped me understand entries and risk better.”<br><span>— Alex S, 2026</span></div>
+    <div class="quote">“The free signals and explanations made trading easier to follow.”<br><span>— Marcus J, 2026</span></div>
+    <div class="quote">“I like how beginner-friendly the group is.”<br><span>— Daniel R, 2026</span></div>
+    <div class="quote">“Clear setups, simple updates, and useful market education.”<br><span>— Ryan K, 2026</span></div>
+    <div class="quote">“A good community for learning and improving discipline.”<br><span>— Jordan M, 2026</span></div>
+    <div class="quote">“The group helped me stop rushing trades and focus on structure.”<br><span>— Liam T, 2026</span></div>
+  </div>
+
+  <h3 class="signals-subtitle">Proofs</h3>
+
+  <div class="proofs">
+    <img src="proof1.png" alt="TTBSignals trading proof 1">
+    <img src="proof2.png" alt="TTBSignals trading proof 2">
+  </div>
+</section>
+
+<style>
+  .signals-page {
+    display: none;
+    min-height: 100vh;
+    padding: 90px 7%;
+    background:
+      radial-gradient(circle at top left, rgba(255, 190, 40, 0.22), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(255, 170, 0, 0.18), transparent 30%),
+      #050403;
+    animation: goldGlow 6s infinite alternate ease-in-out;
+  }
+
+  @keyframes goldGlow {
+    from { box-shadow: inset 0 0 80px rgba(255, 180, 0, 0.12); }
+    to { box-shadow: inset 0 0 160px rgba(255, 200, 0, 0.28); }
+  }
+
+  .signals-title {
+    font-size: 70px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 18px #ffd700, 0 0 45px #c79400;
+    margin-bottom: 30px;
+  }
+
+  .signals-intro {
+    max-width: 950px;
+    margin: 0 auto 25px;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 19px;
+    color: white;
+  }
+
+  .signal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 40px 0;
+  }
+
+  .signal-buttons a {
+    padding: 16px 30px;
+    border-radius: 40px;
+    background: #ffd700;
+    color: black;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.75);
+  }
+
+  .signals-subtitle {
+    text-align: center;
+    font-size: 34px;
+    margin: 55px 0 30px;
+    color: white;
+    text-shadow: 0 0 16px #ffd700;
+  }
+
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .quote {
+    background: rgba(0,0,0,0.75);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    border-radius: 20px;
+    padding: 24px;
+    color: white;
+    line-height: 1.7;
+    box-shadow: 0 0 22px rgba(255, 215, 0, 0.15);
+  }
+
+  .quote span {
+    color: #ffd700;
+    font-weight: bold;
+  }
+
+  .proofs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+  }
+
+  .proofs img {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+  }
+
+  @media (max-width: 900px) {
+    .testimonials {
+      grid-template-columns: 1fr;
+    }
+
+    .signals-title {
+      font-size: 45px;
+    }
+  }
+</style>
+
+<script>
+  function showSignalsPage() {
+    document.querySelector("header").style.display = "none";
+    document.querySelector("#products").style.display = "none";
+    document.querySelector("#payments").style.display = "none";
+    document.querySelector("#contact").style.display = "none";
+    document.querySelector("#signals").style.display = "block";
+    window.scrollTo(0, 0);
+  }
+
+  function showMainPage() {
+    document.querySelector("header").style.display = "block";
+    document.querySelector("#products").style.display = "block";
+    document.querySelector("#payments").style.display = "block";
+    document.querySelector("#contact").style.display = "block";
+    document.querySelector("#signals").style.display = "none";
+    window.scrollTo(0, 0);
+  }
+</script>
+```
 
   <footer>
     <p>© 2026 FX1ND1CATORS. All rights reserved.</p>
