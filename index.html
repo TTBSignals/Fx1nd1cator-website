@@ -628,6 +628,7 @@
   </section>
 ```html
 <section id="signals" class="signals-page">
+ <div class="signals-hero-text">
   <h2 class="signals-title">TTBSignals</h2>
 
   <p class="signals-intro">
@@ -638,13 +639,15 @@
     patience, and risk awareness.
   </p>
 
-  <p class="signals-intro">
-    Our goal is simple: provide free trading signals, market updates, trade ideas,
-    and educational support for traders who want guidance without feeling lost.
-    TTBSignals focuses on helping people learn while also giving them access to
-    clear trading opportunities.
-  </p>
+  <h3 class="goal-heading">Our Goal</h3>
 
+  <p class="signals-intro">
+    Provide free trading signals, market updates, trade ideas, and educational
+    support for traders who want guidance without feeling lost. TTBSignals focuses
+    on helping people learn while also giving them access to clear trading
+    opportunities.
+  </p>
+</div>
   <div class="signal-buttons">
     <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
     <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
@@ -687,22 +690,35 @@
     to { box-shadow: inset 0 0 160px rgba(255, 200, 0, 0.28); }
   }
 
-  .signals-title {
-    font-size: 70px;
-    text-align: center;
-    color: white;
-    text-shadow: 0 0 18px #ffd700, 0 0 45px #c79400;
-    margin-bottom: 30px;
-  }
+ .signals-hero-text {
+  max-width: 950px;
+  margin: 0;
+  text-align: left;
+}
 
-  .signals-intro {
-    max-width: 950px;
-    margin: 0 auto 25px;
-    text-align: center;
-    line-height: 1.8;
-    font-size: 19px;
-    color: white;
-  }
+.signals-title {
+  font-size: 70px;
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 18px #ffd700, 0 0 45px #c79400;
+  margin-bottom: 30px;
+}
+
+.signals-intro {
+  max-width: 900px;
+  margin: 0 0 28px 0;
+  text-align: left;
+  line-height: 1.8;
+  font-size: 19px;
+  color: white;
+}
+
+.goal-heading {
+  font-size: 30px;
+  color: #ffd700;
+  text-shadow: 0 0 14px #ffd700, 0 0 35px #c79400;
+  margin: 35px 0 12px;
+}
 
   .signal-buttons {
     display: flex;
