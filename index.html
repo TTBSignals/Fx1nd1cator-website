@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -65,7 +66,6 @@
       to { background-position: 500px 600px, -350px 450px; }
     }
 
-    /* LOADER */
     #loader {
       position: fixed;
       inset: 0;
@@ -369,13 +369,6 @@
       text-shadow: 0 0 14px #22ff6a;
     }
 
-    .notice ul {
-      margin-left: 25px;
-      margin-top: 10px;
-      line-height: 1.8;
-    }
-
-    /* TTB SIGNALS PAGE */
     .signals-page {
       display: none;
       min-height: 100vh;
@@ -452,7 +445,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
-      margin: 50px 0;
+      margin: 50px 0 35px;
     }
 
     .signals-stat-card {
@@ -537,6 +530,7 @@
       .hero { text-align: center; }
     }
   </style>
+
 </head>
 
 <body>
@@ -561,219 +555,228 @@
     <nav>
       <div class="logo"><span>FX1</span>ND1CATORS</div>
 
-      <ul>
-        <li><a href="#home" onclick="showMainPage()">Home</a></li>
-        <li><a href="#signals" onclick="showSignalsPage()">Free Trading Signals</a></li>
-        <li><a href="#products" onclick="showMainPage()">Products</a></li>
-        <li><a href="#payments" onclick="showMainPage()">Payments</a></li>
-        <li><a href="#contact" onclick="showMainPage()">Contact</a></li>
-      </ul>
-    </nav>
+```
+  <ul>
+    <li><a href="#home" onclick="showMainPage()">Home</a></li>
+    <li><a href="#signals" onclick="showSignalsPage()">Free Trading Signals</a></li>
+    <li><a href="#products" onclick="showMainPage()">Products</a></li>
+    <li><a href="#payments" onclick="showMainPage()">Payments</a></li>
+    <li><a href="#contact" onclick="showMainPage()">Contact</a></li>
+  </ul>
+</nav>
 
-    <div class="hero">
-      <div class="tag">Trading Indicators • Automated Systems • Market Tools</div>
+<div class="hero">
+  <div class="tag">Trading Indicators • Automated Systems • Market Tools</div>
 
-      <h1>FX1ND1CATORS</h1>
+  <h1>FX1ND1CATORS</h1>
 
-      <p>
-        Professional trading indicators, automated trading systems and technical
-        analysis tools built for traders who want structure, precision and smarter
-        market decision-making.
-      </p>
+  <p>
+    Professional trading indicators, automated trading systems and technical
+    analysis tools built for traders who want structure, precision and smarter
+    market decision-making.
+  </p>
 
-      <a href="#products" class="btn">View Products</a>
-    </div>
+  <a href="#products" class="btn">View Products</a>
+</div>
+```
+
   </header>
 
   <section id="products">
     <h2 class="section-title">Products</h2>
 
-    <p class="intro">
-      Choose from professional trading indicators, automation tools and structured
-      trading systems. After payment, send confirmation and open a ticket showing
-      the purchased product for super fast delivery.
-    </p>
+```
+<p class="intro">
+  Choose from professional trading indicators, automation tools and structured
+  trading systems. After payment, send confirmation and open a ticket showing
+  the purchased product for super fast delivery.
+</p>
 
-    <div class="products">
+<div class="products">
 
-      <div class="card">
-        <h3>Forever Model Pro Sniper</h3>
-        <div class="price">$15</div>
-        <p>A fully automated market-rotation framework built around Internal Range Liquidity, SMT divergence and Change in State of Delivery.</p>
-        <ul>
-          <li>Internal Range Liquidity and FVG detection</li>
-          <li>SMT divergence analysis</li>
-          <li>CISD and orderblock candidate detection</li>
-          <li>Directional bias filters</li>
-          <li>Session and timezone filters</li>
-          <li>Model history control and backtest support</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>The LFXP Universe</h3>
-        <div class="price">$229</div>
-        <p>The complete LFXP package containing all 4 indicators and the automated trading bot.</p>
-        <ul>
-          <li>Includes all 4 indicators</li>
-          <li>Includes LFXPBot</li>
-          <li>Best-value complete bundle</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>The LFXP System</h3>
-        <div class="price">$79</div>
-        <p>A structured indicator package containing all four LFXP indicators for manual technical analysis and trade planning.</p>
-        <ul>
-          <li>Includes all 4 LFXP indicators</li>
-          <li>Designed for manual analysis</li>
-          <li>Useful for structured entries and planning</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>LFXPBot</h3>
-        <div class="price">$199.99</div>
-        <p>A next-generation automated trading system built for MetaTrader 5 and optimized for PuPrime MT5 accounts.</p>
-        <ul>
-          <li>Fully automated MT5 trading system</li>
-          <li>EMA, RSI and ATR strategy framework</li>
-          <li>Dynamic balance/equity-based lot sizing</li>
-          <li>Built-in stop loss and take profit</li>
-          <li>ATR trailing stop and breakeven protection</li>
-          <li>Daily loss and consecutive loss protection</li>
-          <li>Spread, volatility and session filters</li>
-          <li>VPS compatible for 24/5 operation</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>LFXP DTC-Style Strategy</h3>
-        <div class="price">$50</div>
-        <p>A professional trend, momentum and structure trading strategy designed to identify high-probability market opportunities.</p>
-        <ul>
-          <li>EMA trend alignment using 20, 50 and 200 EMAs</li>
-          <li>Market structure breakout entries</li>
-          <li>ATR volatility filter</li>
-          <li>Multiple take-profit levels from 1R to 5R</li>
-          <li>Buy and sell signal visualization</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>MACD Based Price Forecasting</h3>
-        <div class="price">$30</div>
-        <p>A forecasting indicator that helps visualize where price may move after a MACD signal.</p>
-        <ul>
-          <li>Fast, slow and signal MACD settings</li>
-          <li>Forecasting horizon in bars</li>
-          <li>Maximum memory control</li>
-          <li>Top, average and lower percentile forecast bands</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>ML Probability Prediction Indicator</h3>
-        <div class="price">$35</div>
-        <p>A machine-learning-inspired probabilistic trading model designed to estimate future price direction using weighted market features.</p>
-        <ul>
-          <li>Probability-based trade filtering</li>
-          <li>Multi-factor signal generation</li>
-          <li>ML-style feature aggregation</li>
-          <li>Triple-barrier style directional analysis</li>
-        </ul>
-        <div class="pay-buttons">
-          <a class="paypal" href="#payments">Pay with PayPal</a>
-          <a class="cardpay" href="#payments">Pay by Card</a>
-          <a class="crypto" href="#payments">Pay with Crypto</a>
-        </div>
-      </div>
-
+  <div class="card">
+    <h3>Forever Model Pro Sniper</h3>
+    <div class="price">$15</div>
+    <p>A fully automated market-rotation framework built around Internal Range Liquidity, SMT divergence and Change in State of Delivery.</p>
+    <ul>
+      <li>Internal Range Liquidity and FVG detection</li>
+      <li>SMT divergence analysis</li>
+      <li>CISD and orderblock candidate detection</li>
+      <li>Directional bias filters</li>
+      <li>Session and timezone filters</li>
+      <li>Model history control and backtest support</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
     </div>
+  </div>
+
+  <div class="card">
+    <h3>The LFXP Universe</h3>
+    <div class="price">$229</div>
+    <p>The complete LFXP package containing all 4 indicators and the automated trading bot.</p>
+    <ul>
+      <li>Includes all 4 indicators</li>
+      <li>Includes LFXPBot</li>
+      <li>Best-value complete bundle</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The LFXP System</h3>
+    <div class="price">$79</div>
+    <p>A structured indicator package containing all four LFXP indicators for manual technical analysis and trade planning.</p>
+    <ul>
+      <li>Includes all 4 LFXP indicators</li>
+      <li>Designed for manual analysis</li>
+      <li>Useful for structured entries and planning</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>LFXPBot</h3>
+    <div class="price">$199.99</div>
+    <p>A next-generation automated trading system built for MetaTrader 5 and optimized for PuPrime MT5 accounts.</p>
+    <ul>
+      <li>Fully automated MT5 trading system</li>
+      <li>EMA, RSI and ATR strategy framework</li>
+      <li>Dynamic balance/equity-based lot sizing</li>
+      <li>Built-in stop loss and take profit</li>
+      <li>ATR trailing stop and breakeven protection</li>
+      <li>Daily loss and consecutive loss protection</li>
+      <li>Spread, volatility and session filters</li>
+      <li>VPS compatible for 24/5 operation</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>LFXP DTC-Style Strategy</h3>
+    <div class="price">$50</div>
+    <p>A professional trend, momentum and structure trading strategy designed to identify high-probability market opportunities.</p>
+    <ul>
+      <li>EMA trend alignment using 20, 50 and 200 EMAs</li>
+      <li>Market structure breakout entries</li>
+      <li>ATR volatility filter</li>
+      <li>Multiple take-profit levels from 1R to 5R</li>
+      <li>Buy and sell signal visualization</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>MACD Based Price Forecasting</h3>
+    <div class="price">$30</div>
+    <p>A forecasting indicator that helps visualize where price may move after a MACD signal.</p>
+    <ul>
+      <li>Fast, slow and signal MACD settings</li>
+      <li>Forecasting horizon in bars</li>
+      <li>Maximum memory control</li>
+      <li>Top, average and lower percentile forecast bands</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>ML Probability Prediction Indicator</h3>
+    <div class="price">$35</div>
+    <p>A machine-learning-inspired probabilistic trading model designed to estimate future price direction using weighted market features.</p>
+    <ul>
+      <li>Probability-based trade filtering</li>
+      <li>Multi-factor signal generation</li>
+      <li>ML-style feature aggregation</li>
+      <li>Triple-barrier style directional analysis</li>
+    </ul>
+    <div class="pay-buttons">
+      <a class="paypal" href="#payments">Pay with PayPal</a>
+      <a class="cardpay" href="#payments">Pay by Card</a>
+      <a class="crypto" href="#payments">Pay with Crypto</a>
+    </div>
+  </div>
+
+</div>
+```
+
   </section>
 
   <section id="payments">
     <h2 class="section-title">Payment Methods</h2>
 
-    <p class="intro">
-      Select your product, send payment using one of the methods below, then open
-      a ticket with screenshot confirmation of payment and the purchased product.
-      Super fast delivery.
-    </p>
+```
+<p class="intro">
+  Select your product, send payment using one of the methods below, then open
+  a ticket with screenshot confirmation of payment and the purchased product.
+  Super fast delivery.
+</p>
 
-    <div class="payments-grid">
-      <div class="card">
-        <h3>PayPal</h3>
-        <p>Send payment to:</p>
-        <p class="wallet">songsongisntme34@gmail.com</p>
-      </div>
+<div class="payments-grid">
+  <div class="card">
+    <h3>PayPal</h3>
+    <p>Send payment to:</p>
+    <p class="wallet">songsongisntme34@gmail.com</p>
+  </div>
 
-      <div class="card">
-        <h3>Bitcoin BTC</h3>
-        <p class="wallet">bc1qsek6vnxgrfksczhfgzsyyl4drmlmly6qrnuk32</p>
-      </div>
+  <div class="card">
+    <h3>Bitcoin BTC</h3>
+    <p class="wallet">bc1qsek6vnxgrfksczhfgzsyyl4drmlmly6qrnuk32</p>
+  </div>
 
-      <div class="card">
-        <h3>Litecoin LTC</h3>
-        <p class="wallet">LRyYtvVaSeViPxgAW3CqfZMqMtPuduWPG6</p>
-      </div>
+  <div class="card">
+    <h3>Litecoin LTC</h3>
+    <p class="wallet">LRyYtvVaSeViPxgAW3CqfZMqMtPuduWPG6</p>
+  </div>
 
-      <div class="card">
-        <h3>Solana SOL</h3>
-        <p class="wallet">MdqWGKAfghH9qPrrsubbMxRRVS2voXMsHYM6pFiw1E6</p>
-      </div>
+  <div class="card">
+    <h3>Solana SOL</h3>
+    <p class="wallet">MdqWGKAfghH9qPrrsubbMxRRVS2voXMsHYM6pFiw1E6</p>
+  </div>
 
-      <div class="card">
-        <h3>Ethereum ETH</h3>
-        <p class="wallet">0x44c1901C8dB9F9fdF0250d7bb4E59398827C9041</p>
-      </div>
+  <div class="card">
+    <h3>Ethereum ETH</h3>
+    <p class="wallet">0x44c1901C8dB9F9fdF0250d7bb4E59398827C9041</p>
+  </div>
 
-      <div class="card">
-        <h3>Bank Card</h3>
-        <p>Card checkout link coming soon.</p>
-      </div>
-    </div>
+  <div class="card">
+    <h3>Bank Card</h3>
+    <p>Card checkout link coming soon.</p>
+  </div>
+</div>
 
-    <div class="notice">
-      <h3>Crypto Payment Instructions</h3>
-      <p>1. Select the product you would like to purchase.</p>
-      <p>2. Send the correct amount of BTC, LTC, SOL or ETH to the wallet address provided.</p>
-      <p>3. Take a screenshot of the completed transaction confirmation.</p>
-      <p>4. Open a support ticket with payment screenshot, transaction ID, product name and email.</p>
-      <br>
-      <p><strong style="color:#22ff6a;">Super Fast Delivery</strong></p>
-    </div>
+<div class="notice">
+  <h3>Crypto Payment Instructions</h3>
+  <p>1. Select the product you would like to purchase.</p>
+  <p>2. Send the correct amount of BTC, LTC, SOL or ETH to the wallet address provided.</p>
+  <p>3. Take a screenshot of the completed transaction confirmation.</p>
+  <p>4. Open a support ticket with payment screenshot, transaction ID, product name and email.</p>
+  <br>
+  <p><strong style="color:#22ff6a;">Super Fast Delivery</strong></p>
+</div>
+```
+
   </section>
 
   <section id="contact">
@@ -790,63 +793,66 @@
     <div class="signals-hero-text">
       <h2 class="signals-title">TTBSignals</h2>
 
-      <p class="signals-intro">
-        TTBSignals is a free Telegram trading signals community built to help new
-        and inexperienced traders understand the markets with more confidence.
-        The group was created from real experience — starting from copying signals,
-        learning through mistakes, and growing into helping others trade with better
-        structure, patience, and risk awareness.
-      </p>
+```
+  <p class="signals-intro">
+    TTBSignals is a free Telegram trading signals community built to help new
+    and inexperienced traders understand the markets with more confidence.
+    The group was created from real experience — starting from copying signals,
+    learning through mistakes, and growing into helping others trade with better
+    structure, patience, and risk awareness.
+  </p>
 
-      <h3 class="goal-heading">Our Goal</h3>
+  <h3 class="goal-heading">Our Goal</h3>
 
-      <p class="signals-intro">
-        Provide free trading signals, market updates, trade ideas, and educational
-        support for traders who want guidance without feeling lost. TTBSignals focuses
-        on helping people learn while also giving them access to clear trading opportunities.
-      </p>
-    </div>
+  <p class="signals-intro">
+    Provide free trading signals, market updates, trade ideas, and educational
+    support for traders who want guidance without feeling lost. TTBSignals focuses
+    on helping people learn while also giving them access to clear trading opportunities.
+  </p>
+</div>
 
-    <div class="signal-buttons">
-      <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
-      <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
-      <a href="#home" onclick="showMainPage()">BACK TO FX1ND1CATORS</a>
-    </div>
+<div class="signal-buttons">
+  <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
+  <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
+  <a href="#home" onclick="showMainPage()">BACK TO FX1ND1CATORS</a>
+</div>
 
-    <div class="signals-stats-grid">
-      <div class="signals-stat-card">
-        <h2><span class="counter" data-target="350">0</span>+</h2>
-        <p>Active Traders</p>
-      </div>
+<div class="signals-stats-grid">
+  <div class="signals-stat-card">
+    <h2><span class="counter" data-target="350">0</span>+</h2>
+    <p>Active Traders</p>
+  </div>
 
-      <div class="signals-stat-card">
-        <h2>$<span class="counter" data-target="150000">0</span>+</h2>
-        <p>All-Time Profits</p>
-      </div>
+  <div class="signals-stat-card">
+    <h2>$<span class="counter" data-target="150000">0</span>+</h2>
+    <p>All-Time Profits</p>
+  </div>
 
-      <div class="signals-stat-card">
-        <h2><span class="counter" data-target="89">0</span>%</h2>
-        <p>Win Percentage</p>
-      </div>
-    </div>
+  <div class="signals-stat-card">
+    <h2><span class="counter" data-target="89">0</span>%</h2>
+    <p>Win Percentage</p>
+  </div>
+</div>
 
-    <h3 class="signals-subtitle">Community Feedback</h3>
+<h3 class="signals-subtitle">Community Feedback</h3>
 
-    <div class="testimonials">
-      <div class="quote">“TTBSignals helped me understand entries and risk better.”<br><span>— Alex S, 2026</span></div>
-      <div class="quote">“The free signals and explanations made trading easier to follow.”<br><span>— Marcus J, 2026</span></div>
-      <div class="quote">“I like how beginner-friendly the group is.”<br><span>— Daniel R, 2026</span></div>
-      <div class="quote">“Clear setups, simple updates, and useful market education.”<br><span>— Ryan K, 2026</span></div>
-      <div class="quote">“A good community for learning and improving discipline.”<br><span>— Jordan M, 2026</span></div>
-      <div class="quote">“The group helped me stop rushing trades and focus on structure.”<br><span>— Liam T, 2026</span></div>
-    </div>
+<div class="testimonials">
+  <div class="quote">“TTBSignals helped me understand entries and risk better.”<br><span>— Alex S, 2026</span></div>
+  <div class="quote">“The free signals and explanations made trading easier to follow.”<br><span>— Marcus J, 2026</span></div>
+  <div class="quote">“I like how beginner-friendly the group is.”<br><span>— Daniel R, 2026</span></div>
+  <div class="quote">“Clear setups, simple updates, and useful market education.”<br><span>— Ryan K, 2026</span></div>
+  <div class="quote">“A good community for learning and improving discipline.”<br><span>— Jordan M, 2026</span></div>
+  <div class="quote">“The group helped me stop rushing trades and focus on structure.”<br><span>— Liam T, 2026</span></div>
+</div>
 
-    <h3 class="signals-subtitle">Proofs</h3>
+<h3 class="signals-subtitle">Proofs</h3>
 
-    <div class="proofs">
-      <img src="up.png" alt="TTBSignals trading proof 1">
-      <img src="sell exit.png" alt="TTBSignals trading proof 2">
-    </div>
+<div class="proofs">
+  <img src="up.png" alt="TTBSignals trading proof 1">
+  <img src="sell exit.png" alt="TTBSignals trading proof 2">
+</div>
+```
+
   </section>
 
   <footer>
@@ -861,8 +867,10 @@
       document.querySelector("#payments").style.display = "none";
       document.querySelector("#contact").style.display = "none";
       document.querySelector("footer").style.display = "none";
+
       document.querySelector("#signals").style.display = "block";
       document.body.style.background = "#000";
+
       window.scrollTo(0,0);
       startCounters();
     }
@@ -873,8 +881,10 @@
       document.querySelector("#payments").style.display = "block";
       document.querySelector("#contact").style.display = "block";
       document.querySelector("footer").style.display = "block";
+
       document.querySelector("#signals").style.display = "none";
       document.body.style.background = "#020403";
+
       window.scrollTo(0,0);
     }
 
@@ -887,7 +897,10 @@
 
       const loading = setInterval(function () {
         percent += 5;
-        if (percent > 100) percent = 100;
+
+        if (percent > 100) {
+          percent = 100;
+        }
 
         percentText.textContent = percent + "%";
         fill.style.width = percent + "%";
@@ -911,6 +924,7 @@
 
       counters.forEach(counter => {
         counter.textContent = "0";
+
         const target = Number(counter.getAttribute("data-target"));
         let current = 0;
         const duration = 3000;
@@ -933,4 +947,3 @@
 
 </body>
 </html>
-```
