@@ -304,15 +304,17 @@
 
 <body>
 
+```html
 <div id="loader">
-  <div class="loader-box">
+  <div class="loader-content">
     <h1>FX1ND1CATORS</h1>
-    <div class="loading-percent" id="loadingPercent">0%</div>
-    <div class="loading-bar">
-      <div class="loading-fill" id="loadingFill"></div>
+    <div class="loader-percent" id="loadingPercent">0%</div>
+    <div class="loader-bar">
+      <div class="loader-fill" id="loadingFill"></div>
     </div>
   </div>
 </div>
+
 
 <!-- rest of your website -->
   <div class="bg"></div>
@@ -637,7 +639,7 @@
       </p>
     </div>
   </section>
-```html
+  
 <section id="signals" class="signals-page">
  <div class="signals-hero-text">
   <h2 class="signals-title">TTBSignals</h2>
@@ -801,62 +803,133 @@
     }
   }
 </style>
+```css
 #loader {
   position: fixed;
   inset: 0;
-  background: #000;
-  z-index: 99999;
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0,255,90,0.28), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,215,0,0.20), transparent 30%),
+    radial-gradient(circle at center, rgba(0,255,90,0.12), transparent 45%),
+    #000000;
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: loaderFloat 1.2s ease-in-out infinite alternate;
+  overflow: hidden;
 }
 
-.loader-box {
+#loader::before,
+#loader::after {
+  content: "";
+  position: absolute;
+  width: 160%;
+  height: 260px;
+  left: -30%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, transparent, rgba(0,255,90,0.55), rgba(255,215,0,0.28), transparent);
+  filter: blur(38px);
+  opacity: 0.45;
+  animation: loaderWave 4s infinite ease-in-out;
+}
+
+#loader::before {
+  top: 28%;
+  transform: rotate(-9deg);
+}
+
+#loader::after {
+  bottom: 18%;
+  transform: rotate(10deg);
+  animation-delay: 1.5s;
+  opacity: 0.28;
+}
+
+@keyframes loaderWave {
+  0%, 100% {
+    translate: -60px 0;
+  }
+  50% {
+    translate: 90px -35px;
+  }
+}
+
+.loader-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  animation: hoverLoader 1.3s infinite ease-in-out alternate;
 }
 
-.loader-box h1 {
-  font-size: 48px;
+@keyframes hoverLoader {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-14px);
+  }
+}
+
+.loader-content h1 {
+  font-size: clamp(42px, 8vw, 95px);
   color: white;
-  text-shadow: 0 0 15px #22ff6a, 0 0 40px #22ff6a;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 10px white,
+    0 0 25px #22ff6a,
+    0 0 55px #22ff6a;
   margin-bottom: 20px;
 }
 
-.loading-percent {
-  font-size: 34px;
+.loader-percent {
+  font-size: clamp(28px, 5vw, 52px);
   color: #22ff6a;
-  font-weight: bold;
-  text-shadow: 0 0 20px #22ff6a;
-  margin-bottom: 18px;
+  font-weight: 900;
+  text-shadow:
+    0 0 10px #22ff6a,
+    0 0 25px #22ff6a,
+    0 0 50px #22ff6a;
+  margin-bottom: 22px;
 }
 
-.loading-bar {
-  width: 320px;
-  height: 12px;
+.loader-bar {
+  width: min(460px, 82vw);
+  height: 14px;
   border: 1px solid #22ff6a;
   border-radius: 50px;
   overflow: hidden;
-  box-shadow: 0 0 20px #22ff6a;
+  box-shadow:
+    0 0 18px rgba(34,255,106,0.8),
+    inset 0 0 12px rgba(34,255,106,0.35);
+  background: rgba(0,0,0,0.65);
 }
 
-.loading-fill {
+.loader-fill {
   width: 0%;
   height: 100%;
-  background: #22ff6a;
-  box-shadow: 0 0 25px #22ff6a;
+  background: linear-gradient(90deg, #22ff6a, #ffd700);
+  box-shadow: 0 0 30px #22ff6a;
 }
 
-@keyframes loaderFloat {
-  from { transform: translateY(0); }
-  to { transform: translateY(-12px); }
+#loader.fly-away {
+  animation: loaderFlyAway 0.75s ease forwards;
 }
 
-#loader.hide {
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.5s ease;
+@keyframes loaderFlyAway {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120%);
+    visibility: hidden;
+  }
 }
+```
+
 <script>
 function showSignalsPage() {
 
@@ -892,29 +965,40 @@ function showMainPage() {
 </script>
 
 <script>
-let percent = 0;
-const percentText = document.getElementById("loadingPercent");
-const fill = document.getElementById("loadingFill");
-const loader = document.getElementById("loader");
+```html
+<script>
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+  const percentText = document.getElementById("loadingPercent");
+  const fill = document.getElementById("loadingFill");
 
-const loading = setInterval(() => {
-  percent += 4;
+  let percent = 0;
 
-  if (percent > 100) {
-    percent = 100;
-  }
+  const loading = setInterval(function () {
+    percent += 5;
 
-  percentText.textContent = percent + "%";
-  fill.style.width = percent + "%";
+    if (percent > 100) {
+      percent = 100;
+    }
 
-  if (percent === 100) {
-    clearInterval(loading);
+    percentText.textContent = percent + "%";
+    fill.style.width = percent + "%";
 
-    setTimeout(() => {
-      loader.classList.add("hide");
-    }, 300);
-  }
-}, 35);
+    if (percent === 100) {
+      clearInterval(loading);
+
+      setTimeout(function () {
+        loader.classList.add("fly-away");
+      }, 250);
+
+      setTimeout(function () {
+        loader.style.display = "none";
+      }, 1100);
+    }
+  }, 30);
+});
+</script>
+
 </script>
 
   <footer>
