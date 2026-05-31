@@ -304,6 +304,17 @@
 
 <body>
 
+<div id="loader">
+  <div class="loader-box">
+    <h1>FX1ND1CATORS</h1>
+    <div class="loading-percent" id="loadingPercent">0%</div>
+    <div class="loading-bar">
+      <div class="loading-fill" id="loadingFill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- rest of your website -->
   <div class="bg"></div>
   <div class="wave one"></div>
   <div class="wave two"></div>
@@ -790,7 +801,62 @@
     }
   }
 </style>
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: loaderFloat 1.2s ease-in-out infinite alternate;
+}
 
+.loader-box {
+  text-align: center;
+}
+
+.loader-box h1 {
+  font-size: 48px;
+  color: white;
+  text-shadow: 0 0 15px #22ff6a, 0 0 40px #22ff6a;
+  margin-bottom: 20px;
+}
+
+.loading-percent {
+  font-size: 34px;
+  color: #22ff6a;
+  font-weight: bold;
+  text-shadow: 0 0 20px #22ff6a;
+  margin-bottom: 18px;
+}
+
+.loading-bar {
+  width: 320px;
+  height: 12px;
+  border: 1px solid #22ff6a;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #22ff6a;
+}
+
+.loading-fill {
+  width: 0%;
+  height: 100%;
+  background: #22ff6a;
+  box-shadow: 0 0 25px #22ff6a;
+}
+
+@keyframes loaderFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+#loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+}
 <script>
 function showSignalsPage() {
 
@@ -823,7 +889,33 @@ function showMainPage() {
   window.scrollTo(0,0);
 }
 </script>
-```
+</script>
+
+<script>
+let percent = 0;
+const percentText = document.getElementById("loadingPercent");
+const fill = document.getElementById("loadingFill");
+const loader = document.getElementById("loader");
+
+const loading = setInterval(() => {
+  percent += 4;
+
+  if (percent > 100) {
+    percent = 100;
+  }
+
+  percentText.textContent = percent + "%";
+  fill.style.width = percent + "%";
+
+  if (percent === 100) {
+    clearInterval(loading);
+
+    setTimeout(() => {
+      loader.classList.add("hide");
+    }, 300);
+  }
+}, 35);
+</script>
 
   <footer>
     <p>© 2026 FX1ND1CATORS. All rights reserved.</p>
