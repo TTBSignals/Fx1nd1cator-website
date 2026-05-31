@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +8,15 @@
   <title>FX1ND1CATORS | Trading Indicators & Automated Systems</title>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Arial, sans-serif;
@@ -68,6 +74,117 @@
       to { background-position: 500px 600px, -350px 450px; }
     }
 
+    /* LOADING SCREEN */
+    #loader {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(0,255,90,0.28), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,215,0,0.20), transparent 30%),
+        radial-gradient(circle at center, rgba(0,255,90,0.12), transparent 45%),
+        #000000;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #loader::before,
+    #loader::after {
+      content: "";
+      position: absolute;
+      width: 160%;
+      height: 260px;
+      left: -30%;
+      border-radius: 50%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,90,0.55), rgba(255,215,0,0.28), transparent);
+      filter: blur(38px);
+      opacity: 0.45;
+      animation: loaderWave 4s infinite ease-in-out;
+    }
+
+    #loader::before {
+      top: 28%;
+      transform: rotate(-9deg);
+    }
+
+    #loader::after {
+      bottom: 18%;
+      transform: rotate(10deg);
+      animation-delay: 1.5s;
+      opacity: 0.28;
+    }
+
+    @keyframes loaderWave {
+      0%, 100% { translate: -60px 0; }
+      50% { translate: 90px -35px; }
+    }
+
+    .loader-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      animation: hoverLoader 1.3s infinite ease-in-out alternate;
+    }
+
+    @keyframes hoverLoader {
+      from { transform: translateY(0); }
+      to { transform: translateY(-14px); }
+    }
+
+    .loader-content h1 {
+      font-size: clamp(42px, 8vw, 95px);
+      color: white;
+      letter-spacing: 2px;
+      text-shadow:
+        0 0 10px white,
+        0 0 25px #22ff6a,
+        0 0 55px #22ff6a;
+      margin-bottom: 20px;
+    }
+
+    .loader-percent {
+      font-size: clamp(28px, 5vw, 52px);
+      color: #22ff6a;
+      font-weight: 900;
+      text-shadow:
+        0 0 10px #22ff6a,
+        0 0 25px #22ff6a,
+        0 0 50px #22ff6a;
+      margin-bottom: 22px;
+    }
+
+    .loader-bar {
+      width: min(460px, 82vw);
+      height: 14px;
+      border: 1px solid #22ff6a;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow:
+        0 0 18px rgba(34,255,106,0.8),
+        inset 0 0 12px rgba(34,255,106,0.35);
+      background: rgba(0,0,0,0.65);
+    }
+
+    .loader-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #22ff6a, #ffd700);
+      box-shadow: 0 0 30px #22ff6a;
+    }
+
+    #loader.fly-away {
+      animation: loaderFlyAway 0.75s ease forwards;
+    }
+
+    @keyframes loaderFlyAway {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-120%); visibility: hidden; }
+    }
+
     header {
       min-height: 100vh;
       padding: 26px 7%;
@@ -88,7 +205,9 @@
       text-shadow: 0 0 14px #00ff66;
     }
 
-    .logo span { color: #22ff6a; }
+    .logo span {
+      color: #22ff6a;
+    }
 
     nav ul {
       display: flex;
@@ -111,7 +230,9 @@
       text-shadow: 0 0 16px #22ff6a;
     }
 
-    .hero { max-width: 960px; }
+    .hero {
+      max-width: 960px;
+    }
 
     .tag {
       display: inline-block;
@@ -135,8 +256,12 @@
     }
 
     @keyframes glowPulse {
-      0%, 100% { text-shadow: 0 0 10px white, 0 0 28px rgba(34,255,106,0.8); }
-      50% { text-shadow: 0 0 18px white, 0 0 55px rgba(34,255,106,1); }
+      0%, 100% {
+        text-shadow: 0 0 10px white, 0 0 28px rgba(34,255,106,0.8);
+      }
+      50% {
+        text-shadow: 0 0 18px white, 0 0 55px rgba(34,255,106,1);
+      }
     }
 
     .hero p {
@@ -165,7 +290,9 @@
       box-shadow: 0 0 48px rgba(34,255,106,1);
     }
 
-    section { padding: 78px 7%; }
+    section {
+      padding: 78px 7%;
+    }
 
     .section-title {
       text-align: center;
@@ -184,7 +311,37 @@
       text-shadow: 0 0 8px rgba(255,255,255,0.25);
     }
 
-    .products, .payments-grid {
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px 7%;
+    }
+
+    .stat-card {
+      background: rgba(0,0,0,0.75);
+      border: 1px solid rgba(34,255,106,0.4);
+      border-radius: 22px;
+      text-align: center;
+      padding: 35px;
+      box-shadow: 0 0 28px rgba(34,255,106,0.2);
+    }
+
+    .stat-card h2 {
+      font-size: 42px;
+      color: #22ff6a;
+      text-shadow: 0 0 20px #22ff6a;
+    }
+
+    .stat-card p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: white;
+    }
+
+    .products,
+    .payments-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 25px;
@@ -234,7 +391,9 @@
       font-size: 14px;
     }
 
-    .pay-buttons { margin-top: 22px; }
+    .pay-buttons {
+      margin-top: 22px;
+    }
 
     .pay-buttons a {
       display: block;
@@ -286,6 +445,121 @@
       line-height: 1.8;
     }
 
+    /* TTB SIGNALS PAGE */
+    .signals-page {
+      display: none;
+      min-height: 100vh;
+      padding: 90px 7%;
+      background:
+        radial-gradient(circle at top left, rgba(255,215,0,.35), transparent 25%),
+        radial-gradient(circle at top right, rgba(255,180,0,.25), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(255,200,0,.15), transparent 30%),
+        #000000;
+      animation: goldGlow 6s infinite alternate ease-in-out;
+    }
+
+    @keyframes goldGlow {
+      from { box-shadow: inset 0 0 80px rgba(255,180,0,0.12); }
+      to { box-shadow: inset 0 0 160px rgba(255,200,0,0.28); }
+    }
+
+    .signals-hero-text {
+      max-width: 950px;
+      margin: 0;
+      text-align: left;
+    }
+
+    .signals-title {
+      font-size: clamp(52px, 8vw, 90px);
+      text-align: left;
+      color: white;
+      text-shadow: 0 0 18px #ffd700, 0 0 45px #c79400;
+      margin-bottom: 30px;
+    }
+
+    .signals-intro {
+      max-width: 900px;
+      margin: 0 0 28px 0;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 19px;
+      color: white;
+    }
+
+    .goal-heading {
+      font-size: 30px;
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 14px #ffd700, 0 0 35px #c79400;
+      margin: 35px 0 12px;
+    }
+
+    .signal-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .signal-buttons a {
+      padding: 16px 30px;
+      border-radius: 40px;
+      background: #ffd700;
+      color: black;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 0 25px rgba(255,215,0,0.75);
+      transition: 0.25s;
+    }
+
+    .signal-buttons a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 45px rgba(255,215,0,1);
+    }
+
+    .signals-subtitle {
+      text-align: center;
+      font-size: 34px;
+      margin: 55px 0 30px;
+      color: white;
+      text-shadow: 0 0 16px #ffd700;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .quote {
+      background: rgba(0,0,0,0.75);
+      border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 20px;
+      padding: 24px;
+      color: white;
+      line-height: 1.7;
+      box-shadow: 0 0 22px rgba(255,215,0,0.15);
+    }
+
+    .quote span {
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    .proofs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .proofs img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,215,0,0.45);
+      box-shadow: 0 0 30px rgba(255,215,0,0.25);
+    }
+
     footer {
       padding: 40px 7%;
       text-align: center;
@@ -294,28 +568,44 @@
       line-height: 1.8;
     }
 
+    @media (max-width: 900px) {
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .signals-title {
+        font-size: 45px;
+      }
+    }
+
     @media (max-width: 850px) {
-      nav { flex-direction: column; }
-      nav ul { gap: 14px; }
-      .hero { text-align: center; }
+      nav {
+        flex-direction: column;
+      }
+
+      nav ul {
+        gap: 14px;
+      }
+
+      .hero {
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div id="loader">
-  <div class="loader-content">
-    <h1>FX1ND1CATORS</h1>
-    <div class="loader-percent" id="loadingPercent">0%</div>
-    <div class="loader-bar">
-      <div class="loader-fill" id="loadingFill"></div>
+  <div id="loader">
+    <div class="loader-content">
+      <h1>FX1ND1CATORS</h1>
+      <div class="loader-percent" id="loadingPercent">0%</div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loadingFill"></div>
+      </div>
     </div>
   </div>
-</div>
 
-
-<!-- rest of your website -->
   <div class="bg"></div>
   <div class="wave one"></div>
   <div class="wave two"></div>
@@ -327,11 +617,11 @@
       <div class="logo"><span>FX1</span>ND1CATORS</div>
 
       <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home" onclick="showMainPage()">Home</a></li>
         <li><a href="#signals" onclick="showSignalsPage()">Free Trading Signals</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#payments">Payments</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#products" onclick="showMainPage()">Products</a></li>
+        <li><a href="#payments" onclick="showMainPage()">Payments</a></li>
+        <li><a href="#contact" onclick="showMainPage()">Contact</a></li>
       </ul>
     </nav>
 
@@ -349,6 +639,25 @@
       <a href="#products" class="btn">View Products</a>
     </div>
   </header>
+
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h2><span class="counter" data-target="350">0</span>+</h2>
+        <p>Active Traders</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>$<span class="counter" data-target="150000">0</span>+</h2>
+        <p>All-Time Profits</p>
+      </div>
+
+      <div class="stat-card">
+        <h2><span class="counter" data-target="89">0</span>%</h2>
+        <p>Win Percentage</p>
+      </div>
+    </div>
+  </section>
 
   <section id="products">
     <h2 class="section-title">Products</h2>
@@ -587,7 +896,7 @@
 
       <ul>
         <li>Your payment screenshot</li>
-        <li>Transaction ID (TXID)</li>
+        <li>Transaction ID</li>
         <li>Purchased product name</li>
         <li>Your email address</li>
         <li>Your TradingView username if required</li>
@@ -638,370 +947,147 @@
       </p>
     </div>
   </section>
-  
-<section id="signals" class="signals-page">
- <div class="signals-hero-text">
-  <h2 class="signals-title">TTBSignals</h2>
 
-  <p class="signals-intro">
-    TTBSignals is a free Telegram trading signals community built to help new and
-    inexperienced traders understand the markets with more confidence. The group
-    was created from real experience — starting from copying signals, learning
-    through mistakes, and growing into helping others trade with better structure,
-    patience, and risk awareness.
-  </p>
+  <section id="signals" class="signals-page">
+    <div class="signals-hero-text">
+      <h2 class="signals-title">TTBSignals</h2>
 
-  <h3 class="goal-heading">Our Goal</h3>
+      <p class="signals-intro">
+        TTBSignals is a free Telegram trading signals community built to help new
+        and inexperienced traders understand the markets with more confidence.
+        The group was created from real experience — starting from copying signals,
+        learning through mistakes, and growing into helping others trade with better
+        structure, patience, and risk awareness.
+      </p>
 
-  <p class="signals-intro">
-    Provide free trading signals, market updates, trade ideas, and educational
-    support for traders who want guidance without feeling lost. TTBSignals focuses
-    on helping people learn while also giving them access to clear trading
-    opportunities.
-  </p>
-</div>
-  <div class="signal-buttons">
-    <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
-    <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
-    <a href="#home" onclick="showMainPage()">Back to FX1ND1CATORS</a>
-  </div>
+      <h3 class="goal-heading">Our Goal</h3>
 
-  <h3 class="signals-subtitle">Community Feedback</h3>
+      <p class="signals-intro">
+        Provide free trading signals, market updates, trade ideas, and educational
+        support for traders who want guidance without feeling lost. TTBSignals focuses
+        on helping people learn while also giving them access to clear trading
+        opportunities.
+      </p>
+    </div>
 
-  <div class="testimonials">
-    <div class="quote">“TTBSignals helped me understand entries and risk better.”<br><span>— Alex S, 2026</span></div>
-    <div class="quote">“The free signals and explanations made trading easier to follow.”<br><span>— Marcus J, 2026</span></div>
-    <div class="quote">“I like how beginner-friendly the group is.”<br><span>— Daniel R, 2026</span></div>
-    <div class="quote">“Clear setups, simple updates, and useful market education.”<br><span>— Ryan K, 2026</span></div>
-    <div class="quote">“A good community for learning and improving discipline.”<br><span>— Jordan M, 2026</span></div>
-    <div class="quote">“The group helped me stop rushing trades and focus on structure.”<br><span>— Liam T, 2026</span></div>
-  </div>
+    <div class="signal-buttons">
+      <a href="https://t.me/+XvTuCKJWexFkM2Y0" target="_blank">FREE SIGNALS</a>
+      <a href="https://t.me/claricle" target="_blank">MESSAGE US</a>
+      <a href="#home" onclick="showMainPage()">BACK TO FX1ND1CATORS</a>
+    </div>
 
-  <h3 class="signals-subtitle">Proofs</h3>
+    <h3 class="signals-subtitle">Community Feedback</h3>
 
-  <div class="proofs">
-    <img src="proof1.png" alt="TTBSignals trading proof 1">
-    <img src="proof2.png" alt="TTBSignals trading proof 2">
-  </div>
-</section>
+    <div class="testimonials">
+      <div class="quote">“TTBSignals helped me understand entries and risk better.”<br><span>— Alex S, 2026</span></div>
+      <div class="quote">“The free signals and explanations made trading easier to follow.”<br><span>— Marcus J, 2026</span></div>
+      <div class="quote">“I like how beginner-friendly the group is.”<br><span>— Daniel R, 2026</span></div>
+      <div class="quote">“Clear setups, simple updates, and useful market education.”<br><span>— Ryan K, 2026</span></div>
+      <div class="quote">“A good community for learning and improving discipline.”<br><span>— Jordan M, 2026</span></div>
+      <div class="quote">“The group helped me stop rushing trades and focus on structure.”<br><span>— Liam T, 2026</span></div>
+    </div>
 
-<style>
-  .signals-page {
-    display: none;
-    min-height: 100vh;
-    padding: 90px 7%;
-    background:
-      radial-gradient(circle at top left, rgba(255, 190, 40, 0.22), transparent 30%),
-      radial-gradient(circle at bottom right, rgba(255, 170, 0, 0.18), transparent 30%),
-      #050403;
-    animation: goldGlow 6s infinite alternate ease-in-out;
-  }
+    <h3 class="signals-subtitle">Proofs</h3>
 
-  @keyframes goldGlow {
-    from { box-shadow: inset 0 0 80px rgba(255, 180, 0, 0.12); }
-    to { box-shadow: inset 0 0 160px rgba(255, 200, 0, 0.28); }
-  }
-
- .signals-hero-text {
-  max-width: 950px;
-  margin: 0;
-  text-align: left;
-}
-
-.signals-title {
-  font-size: 70px;
-  text-align: left;
-  color: white;
-  text-shadow: 0 0 18px #ffd700, 0 0 45px #c79400;
-  margin-bottom: 30px;
-}
-
-.signals-intro {
-  max-width: 900px;
-  margin: 0 0 28px 0;
-  text-align: left;
-  line-height: 1.8;
-  font-size: 19px;
-  color: white;
-}
-
-.goal-heading {
-  font-size: 30px;
-  color: #ffd700;
-  text-shadow: 0 0 14px #ffd700, 0 0 35px #c79400;
-  margin: 35px 0 12px;
-}
-
-  .signal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 40px 0;
-  }
-
-  .signal-buttons a {
-    padding: 16px 30px;
-    border-radius: 40px;
-    background: #ffd700;
-    color: black;
-    font-weight: 900;
-    text-decoration: none;
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.75);
-  }
-
-  .signals-subtitle {
-    text-align: center;
-    font-size: 34px;
-    margin: 55px 0 30px;
-    color: white;
-    text-shadow: 0 0 16px #ffd700;
-  }
-
-  .testimonials {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-
-  .quote {
-    background: rgba(0,0,0,0.75);
-    border: 1px solid rgba(255, 215, 0, 0.35);
-    border-radius: 20px;
-    padding: 24px;
-    color: white;
-    line-height: 1.7;
-    box-shadow: 0 0 22px rgba(255, 215, 0, 0.15);
-  }
-
-  .quote span {
-    color: #ffd700;
-    font-weight: bold;
-  }
-
-  .proofs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-  }
-
-  .proofs img {
-    width: 100%;
-    border-radius: 18px;
-    border: 1px solid rgba(255, 215, 0, 0.45);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
-  }
-
-  @media (max-width: 900px) {
-    .testimonials {
-      grid-template-columns: 1fr;
-    }
-
-    .signals-title {
-      font-size: 45px;
-    }
-  }
-</style>
-#loader {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(0,255,90,0.28), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255,215,0,0.20), transparent 30%),
-    radial-gradient(circle at center, rgba(0,255,90,0.12), transparent 45%),
-    #000000;
-  z-index: 999999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-#loader::before,
-#loader::after {
-  content: "";
-  position: absolute;
-  width: 160%;
-  height: 260px;
-  left: -30%;
-  border-radius: 50%;
-  background: linear-gradient(90deg, transparent, rgba(0,255,90,0.55), rgba(255,215,0,0.28), transparent);
-  filter: blur(38px);
-  opacity: 0.45;
-  animation: loaderWave 4s infinite ease-in-out;
-}
-
-#loader::before {
-  top: 28%;
-  transform: rotate(-9deg);
-}
-
-#loader::after {
-  bottom: 18%;
-  transform: rotate(10deg);
-  animation-delay: 1.5s;
-  opacity: 0.28;
-}
-
-@keyframes loaderWave {
-  0%, 100% {
-    translate: -60px 0;
-  }
-  50% {
-    translate: 90px -35px;
-  }
-}
-
-.loader-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  animation: hoverLoader 1.3s infinite ease-in-out alternate;
-}
-
-@keyframes hoverLoader {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-14px);
-  }
-}
-
-.loader-content h1 {
-  font-size: clamp(42px, 8vw, 95px);
-  color: white;
-  letter-spacing: 2px;
-  text-shadow:
-    0 0 10px white,
-    0 0 25px #22ff6a,
-    0 0 55px #22ff6a;
-  margin-bottom: 20px;
-}
-
-.loader-percent {
-  font-size: clamp(28px, 5vw, 52px);
-  color: #22ff6a;
-  font-weight: 900;
-  text-shadow:
-    0 0 10px #22ff6a,
-    0 0 25px #22ff6a,
-    0 0 50px #22ff6a;
-  margin-bottom: 22px;
-}
-
-.loader-bar {
-  width: min(460px, 82vw);
-  height: 14px;
-  border: 1px solid #22ff6a;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow:
-    0 0 18px rgba(34,255,106,0.8),
-    inset 0 0 12px rgba(34,255,106,0.35);
-  background: rgba(0,0,0,0.65);
-}
-
-.loader-fill {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #22ff6a, #ffd700);
-  box-shadow: 0 0 30px #22ff6a;
-}
-
-#loader.fly-away {
-  animation: loaderFlyAway 0.75s ease forwards;
-}
-
-@keyframes loaderFlyAway {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-120%);
-    visibility: hidden;
-  }
-}
-
-<script>
-function showSignalsPage() {
-
-  document.querySelector("header").style.display = "none";
-  document.querySelector("#products").style.display = "none";
-  document.querySelector("#payments").style.display = "none";
-  document.querySelector("#contact").style.display = "none";
-  document.querySelector("footer").style.display = "none";
-
-  document.querySelector("#signals").style.display = "block";
-
-  document.body.style.background =
-    "radial-gradient(circle at top left, rgba(255,190,40,.25), transparent 30%), radial-gradient(circle at bottom right, rgba(255,170,0,.18), transparent 30%), #050403";
-
-  window.scrollTo(0,0);
-}
-
-function showMainPage() {
-
-  document.querySelector("header").style.display = "block";
-  document.querySelector("#products").style.display = "block";
-  document.querySelector("#payments").style.display = "block";
-  document.querySelector("#contact").style.display = "block";
-  document.querySelector("footer").style.display = "block";
-
-  document.querySelector("#signals").style.display = "none";
-
-  document.body.style.background = "#020403";
-
-  window.scrollTo(0,0);
-}
-</script>
-</script>
-
-<script>
-```html
-<script>
-window.addEventListener("load", function () {
-  const loader = document.getElementById("loader");
-  const percentText = document.getElementById("loadingPercent");
-  const fill = document.getElementById("loadingFill");
-
-  let percent = 0;
-
-  const loading = setInterval(function () {
-    percent += 5;
-
-    if (percent > 100) {
-      percent = 100;
-    }
-
-    percentText.textContent = percent + "%";
-    fill.style.width = percent + "%";
-
-    if (percent === 100) {
-      clearInterval(loading);
-
-      setTimeout(function () {
-        loader.classList.add("fly-away");
-      }, 250);
-
-      setTimeout(function () {
-        loader.style.display = "none";
-      }, 1100);
-    }
-  }, 30);
-});
-</script>
-
-</script>
+    <div class="proofs">
+      <img src="up.png" alt="TTBSignals trading proof 1">
+      <img src="sell exit.png" alt="TTBSignals trading proof 2">
+    </div>
+  </section>
 
   <footer>
     <p>© 2026 FX1ND1CATORS. All rights reserved.</p>
     <p>Trading involves risk. Past performance does not guarantee future results.</p>
   </footer>
 
+  <script>
+    function showSignalsPage() {
+      document.querySelector("header").style.display = "none";
+      document.querySelector("#stats").style.display = "none";
+      document.querySelector("#products").style.display = "none";
+      document.querySelector("#payments").style.display = "none";
+      document.querySelector("#contact").style.display = "none";
+      document.querySelector("footer").style.display = "none";
+
+      document.querySelector("#signals").style.display = "block";
+
+      document.body.style.background =
+        "radial-gradient(circle at top left, rgba(255,190,40,.25), transparent 30%), radial-gradient(circle at bottom right, rgba(255,170,0,.18), transparent 30%), #050403";
+
+      window.scrollTo(0,0);
+    }
+
+    function showMainPage() {
+      document.querySelector("header").style.display = "block";
+      document.querySelector("#stats").style.display = "block";
+      document.querySelector("#products").style.display = "block";
+      document.querySelector("#payments").style.display = "block";
+      document.querySelector("#contact").style.display = "block";
+      document.querySelector("footer").style.display = "block";
+
+      document.querySelector("#signals").style.display = "none";
+
+      document.body.style.background = "#020403";
+
+      window.scrollTo(0,0);
+    }
+
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("loader");
+      const percentText = document.getElementById("loadingPercent");
+      const fill = document.getElementById("loadingFill");
+
+      let percent = 0;
+
+      const loading = setInterval(function () {
+        percent += 5;
+
+        if (percent > 100) {
+          percent = 100;
+        }
+
+        percentText.textContent = percent + "%";
+        fill.style.width = percent + "%";
+
+        if (percent === 100) {
+          clearInterval(loading);
+
+          setTimeout(function () {
+            loader.classList.add("fly-away");
+          }, 250);
+
+          setTimeout(function () {
+            loader.style.display = "none";
+            startCounters();
+          }, 1100);
+        }
+      }, 30);
+    });
+
+    function startCounters() {
+      const counters = document.querySelectorAll(".counter");
+
+      counters.forEach(counter => {
+        const target = Number(counter.getAttribute("data-target"));
+        let current = 0;
+        const duration = 3000;
+        const stepTime = 20;
+        const increment = target / (duration / stepTime);
+
+        const updateCounter = setInterval(() => {
+          current += increment;
+
+          if (current >= target) {
+            counter.textContent = target.toLocaleString();
+            clearInterval(updateCounter);
+          } else {
+            counter.textContent = Math.floor(current).toLocaleString();
+          }
+        }, stepTime);
+      });
+    }
+  </script>
+
 </body>
 </html>
+```
